@@ -34,7 +34,10 @@ class _PromocaoPageState extends State<PromocaoPage> {
           SizedBox(width: 5),
         ],
       ),
-      body: PromocaoList(),
+      body: Container(
+        padding: EdgeInsets.all(0),
+        child: PromocaoList(),
+      ),
     );
   }
 }

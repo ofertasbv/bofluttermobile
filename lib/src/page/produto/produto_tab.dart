@@ -76,6 +76,7 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
         key: GlobalScaffold.instance.scaffkey,
         appBar: AppBar(
           elevation: 0,
+          titleSpacing: 0,
           title: p.nome == null ? Text("Detalhes do produto") : Text(p.nome),
           actions: <Widget>[
             CircleAvatar(

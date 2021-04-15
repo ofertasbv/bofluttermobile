@@ -29,7 +29,6 @@ dependencies:
   http:
   provider:
   dio: ^4.0.0
-  mobx: ^2.0.1
   flutter_mobx:
   build_runner:
   mobx_codegen:

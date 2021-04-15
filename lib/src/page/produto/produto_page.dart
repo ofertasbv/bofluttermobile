@@ -44,6 +44,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
     Size _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 0,
         title: Text("Produtos"),
         actions: [
           Observer(
@@ -139,6 +140,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
 
   buildScrollbar(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(2),
       child: pagina == "grid"
           ? ProdutoGrid(filter: filter)
           : ProdutoList(filter: filter),

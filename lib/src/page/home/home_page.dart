@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage>
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.list_alt_outlined),
-                title: Text('categorias'),
+                title: Text('departamentos'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.local_convenience_store_outlined),

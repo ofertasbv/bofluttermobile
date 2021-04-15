@@ -1,4 +1,3 @@
-
 import 'package:bofluttermobile/src/page/loja/loja_list.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,10 @@ class _LojaPageState extends State<LojaPage> {
       appBar: AppBar(
         title: Text("todas as lojas"),
       ),
-      body: LojaList(),
+      body: Container(
+        padding: EdgeInsets.all(0),
+        child: LojaList(),
+      ),
     );
   }
 }

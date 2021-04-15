@@ -189,13 +189,13 @@ class _ProdutoFilterPageState extends State<ProdutoFilterPage> {
               },
             ),
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 10),
         ],
       ),
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,

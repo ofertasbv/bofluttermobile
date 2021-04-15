@@ -172,7 +172,7 @@ class _ProdutoListState extends State<ProdutoList>
                             "R\$ ${formatMoeda.format(p.estoque.valorUnitario)}",
                             style: TextStyle(
                               color: Colors.grey[100],
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.lineThrough,
                               decorationStyle: TextDecorationStyle.dashed,
@@ -183,7 +183,7 @@ class _ProdutoListState extends State<ProdutoList>
                           "R\$ ${formatMoeda.format(p.estoque.valorVenda)}",
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontSize: 12,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

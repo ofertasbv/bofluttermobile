@@ -1,6 +1,7 @@
 import 'package:bofluttermobile/src/core/controller/produto_controller.dart';
 import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
+import 'package:bofluttermobile/src/page/produto/produto_filter_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_grid.dart';
 import 'package:bofluttermobile/src/page/produto/produto_list.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
@@ -106,6 +107,26 @@ class _ProdutoPageState extends State<ProdutoPage> {
               ),
               onPressed: () {
                 produtoController.getAllFilter(filter);
+              },
+            ),
+          ),
+          SizedBox(width: 5),
+          CircleAvatar(
+            backgroundColor: Theme.of(context).accentColor,
+            foregroundColor: Colors.black,
+            child: IconButton(
+              icon: Icon(
+                Icons.tune,
+                color: Colors.grey[200],
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return ProdutoFilterPage();
+                    },
+                  ),
+                );
               },
             ),
           ),

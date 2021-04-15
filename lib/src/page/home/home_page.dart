@@ -3,6 +3,7 @@ import 'package:bofluttermobile/src/page/categoria/categoria_list.dart';
 import 'package:bofluttermobile/src/page/home/drawer_list.dart';
 import 'package:bofluttermobile/src/page/home/home.dart';
 import 'package:bofluttermobile/src/page/loja/loja_list.dart';
+import 'package:bofluttermobile/src/page/loja/teste_mapa.dart';
 import 'package:bofluttermobile/src/page/produto/produto_list.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_list.dart';
@@ -50,10 +51,10 @@ class _HomePageState extends State<HomePage>
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          // builder: (context) => TesteMapa(
-                          //   androidFusedLocation: true,
-                          // ),
-                          ),
+                        builder: (context) => TesteMapa(
+                          androidFusedLocation: true,
+                        ),
+                      ),
                     );
                   },
                 ),

@@ -1,6 +1,7 @@
 import 'package:bofluttermobile/src/core/controller/produto_controller.dart';
 import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
+import 'package:bofluttermobile/src/page/produto/produto_tab.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,14 +93,16 @@ class _ProdutoListState extends State<ProdutoList>
       scrollDirection: Axis.vertical,
       itemCount: produtos.length,
       separatorBuilder: (context, index) {
-        return Divider();
+        return Divider(
+          color: Colors.grey[100],
+        );
       },
       itemBuilder: (context, index) {
         Produto p = produtos[index];
 
         return GestureDetector(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 0),
+            padding: EdgeInsets.symmetric(horizontal: 0),
             child: Container(
               color: Colors.grey[200],
               height: 100,
@@ -156,7 +159,7 @@ class _ProdutoListState extends State<ProdutoList>
                   Container(
                     width: 80,
                     height: 100,
-                    color: Colors.grey[300],
+                    color: Colors.grey[200],
                     padding: EdgeInsets.all(2),
                     alignment: Alignment.center,
                     child: Column(
@@ -191,6 +194,15 @@ class _ProdutoListState extends State<ProdutoList>
               ),
             ),
           ),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return ProdutoDetalhesTab(p);
+                },
+              ),
+            );
+          },
         );
       },
     );

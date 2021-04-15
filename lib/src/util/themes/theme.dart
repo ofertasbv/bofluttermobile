@@ -4,8 +4,8 @@ ThemeData getTheme(BuildContext context) {
     tabBarTheme: TabBarTheme(),
     brightness: Brightness.light,
     primaryColor: Colors.deepPurpleAccent[400],
-    accentColor: Colors.orange,
-    primarySwatch: Colors.orange,
+    accentColor: Colors.yellow[800],
+    primarySwatch: Colors.amber,
     scaffoldBackgroundColor: Colors.grey[100],
     cardTheme: CardTheme(
       elevation: 0,
@@ -60,13 +60,13 @@ ThemeData getTheme(BuildContext context) {
     // scaffoldBackgroundColor: Colors.grey[100],
     bottomSheetTheme: BottomSheetThemeData(
       modalElevation: 1,
-      backgroundColor: Colors.orange[600],
+      backgroundColor: Colors.yellow[600],
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 0,
-      selectedItemColor: Colors.orange[600],
+      selectedItemColor: Colors.yellow[800],
       unselectedItemColor: Colors.deepPurple,
-      unselectedLabelStyle: TextStyle(color: Colors.deepPurpleAccent[900]),
+      unselectedLabelStyle: TextStyle(color: Colors.yellow[900]),
       backgroundColor: Colors.grey[100],
     ),
   );

@@ -25,7 +25,7 @@ class _SubCategoriaPageState extends State<SubCategoriaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("todas as categorias"),
+        title: Text("todas as subcategorias"),
         actions: [
           SizedBox(width: 5),
           CircleAvatar(

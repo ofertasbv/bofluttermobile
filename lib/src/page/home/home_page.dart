@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage>
           appBar: AppBar(
             elevation: 0,
             bottomOpacity: 0,
-            title: Text("U-NOSSO"),
+            titleSpacing: 0,
+            title: Text("BOOKOFERTAS"),
             actions: <Widget>[
               CircleAvatar(
                 backgroundColor: Theme.of(context).accentColor,
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage>
                   },
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 5),
               CircleAvatar(
                 backgroundColor: Theme.of(context).accentColor,
                 foregroundColor: Colors.black,
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage>
                   },
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 5),
               GestureDetector(
                 child: CircleAvatar(
                   backgroundColor: Theme.of(context).accentColor,
@@ -110,7 +111,7 @@ class _HomePageState extends State<HomePage>
                   );
                 },
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 5),
             ],
           ),
           body: Center(child: lista[elementIndex]),

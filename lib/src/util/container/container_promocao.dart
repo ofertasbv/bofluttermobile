@@ -23,7 +23,7 @@ class ContainerPromocao extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 0),
         child: Container(
-          color: Colors.grey[100],
+          color: Colors.white,
           height: 100,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,13 +32,13 @@ class ContainerPromocao extends StatelessWidget {
               Container(
                 width: 100,
                 height: 100,
-                color: Colors.grey[600],
+                color: Colors.grey[300],
                 padding: EdgeInsets.all(0),
                 child: p.foto != null
                     ? Container(
                         width: 100,
                         height: 100,
-                        color: Colors.grey[600],
+                        color: Colors.grey[300],
                         child: Image.network(
                           "${promocaoController.arquivo + p.foto}",
                           width: 100,
@@ -49,7 +49,7 @@ class ContainerPromocao extends StatelessWidget {
                     : Container(
                         width: 100,
                         height: 100,
-                        color: Colors.grey[600],
+                        color: Colors.grey[300],
                       ),
               ),
               Container(
@@ -78,7 +78,7 @@ class ContainerPromocao extends StatelessWidget {
               Container(
                 width: 80,
                 height: 100,
-                color: Colors.grey[300],
+                color: Colors.grey[200],
                 padding: EdgeInsets.all(5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

@@ -59,7 +59,7 @@ class _CategoriaListState extends State<CategoriaList>
               subtitle: TextFormField(
                 controller: nomeController,
                 decoration: InputDecoration(
-                  labelText: "busca por categorias",
+                  labelText: "busca por departamentos",
                   prefixIcon: Icon(Icons.search_outlined),
                   suffixIcon: IconButton(
                     onPressed: () => nomeController.clear(),

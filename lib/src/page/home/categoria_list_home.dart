@@ -143,6 +143,7 @@ class _CategoriaListHomeState extends State<CategoriaListHome>
                         c.nome.toLowerCase(),
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
+                          fontSize: 14,
                           color: Colors.grey[900],
                         ),
                       ),

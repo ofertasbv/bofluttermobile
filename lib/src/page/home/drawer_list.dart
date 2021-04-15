@@ -45,25 +45,31 @@ class DrawerList extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 backgroundColor: Colors.grey[300],
-                foregroundColor: Theme.of(context).accentColor ,
+                foregroundColor: Theme.of(context).accentColor,
                 child: Icon(
                   Icons.account_circle,
-                  size: 25,
+                  size: 35,
                 ),
-                maxRadius: 15,
+                maxRadius: 20,
               ),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(0),
                   height: 55,
                   color: Colors.transparent,
-                  child:  ListTile(title: Text("BOOKOFERTAS", style: TextStyle(color: Colors.grey[100]),)),
+                  child: ListTile(
+                    title: Text(
+                      "BOOKOFERTAS",
+                      style: TextStyle(
+                        color: Colors.grey[100],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
         ),
-        Divider(),
         ListTile(
           selected: false,
           leading: Icon(Icons.search_outlined),

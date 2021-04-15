@@ -15,21 +15,9 @@ class ContainerSubCategoria extends StatelessWidget {
       isThreeLine: false,
       leading: Container(
         padding: EdgeInsets.all(1),
-        decoration: new BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).primaryColor
-            ],
-          ),
-          border: Border.all(
-            color: Colors.black,
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(35),
-        ),
         child: CircleAvatar(
-          backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.grey[300],
+          child: Icon(Icons.list_alt_outlined),
           radius: 20,
         ),
       ),

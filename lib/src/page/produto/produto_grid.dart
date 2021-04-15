@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:bofluttermobile/src/core/controller/produto_controller.dart';
 import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
+import 'package:bofluttermobile/src/page/produto/produto_tab.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -140,8 +141,9 @@ class _ProdutoGridState extends State<ProdutoGrid>
                                 ),
                               )
                             : Container(
+                                width: double.infinity,
                                 height: 200,
-                                color: Colors.grey,
+                                color: Colors.grey[300],
                               ),
                         Padding(
                           padding: EdgeInsets.only(top: 10, right: 10),
@@ -238,7 +240,7 @@ class _ProdutoGridState extends State<ProdutoGrid>
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      // return ProdutoDetalhesTab(p);
+                      return ProdutoDetalhesTab(p);
                     },
                   ),
                 );

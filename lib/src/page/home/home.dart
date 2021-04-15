@@ -1,6 +1,7 @@
 import 'package:bofluttermobile/src/page/home/categoria_list_home.dart';
 import 'package:bofluttermobile/src/page/home/produto_list_produto.dart';
 import 'package:bofluttermobile/src/page/home/promocao_list_home.dart';
+import 'package:bofluttermobile/src/page/produto/produto_page.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +74,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            // return ProdutoTab();
+                            return ProdutoPage();
                           },
                         ),
                       );

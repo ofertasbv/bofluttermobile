@@ -4,6 +4,7 @@ import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
 import 'package:bofluttermobile/src/core/model/categoria.dart';
 import 'package:bofluttermobile/src/page/subcategoria/subcategoria_page.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
+import 'package:bofluttermobile/src/util/load/shimmerListCategoriaHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -72,7 +73,7 @@ class _CategoriaListHomeState extends State<CategoriaListHome>
           }
 
           if (categorias == null) {
-            return CircularProgressorMini();
+            return ShimmerListCategoriaHome();
           }
 
           return RefreshIndicator(
@@ -110,7 +111,7 @@ class _CategoriaListHomeState extends State<CategoriaListHome>
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Colors.grey[100],
+                      Colors.grey[200],
                       Colors.white,
                     ],
                     begin: Alignment.topCenter,

@@ -5,6 +5,7 @@ import 'package:bofluttermobile/src/core/model/loja.dart';
 import 'package:bofluttermobile/src/core/model/promocao.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
+import 'package:bofluttermobile/src/util/load/shimmerListPromocaoHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -57,7 +58,7 @@ class _PromocaoListHomeState extends State<PromocaoListHome>
           }
 
           if (promocoes == null) {
-            return CircularProgressorMini();
+            return ShimmerListPromocaoHome();
           }
 
           return RefreshIndicator(

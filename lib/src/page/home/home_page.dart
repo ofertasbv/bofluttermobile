@@ -37,7 +37,50 @@ class _HomePageState extends State<HomePage>
             elevation: 0,
             bottomOpacity: 0,
             titleSpacing: 0,
-            title: Text("BOOKOFERTAS"),
+            title: Container(
+              height: 80,
+              width: 80,
+              child: Container(
+                height: 80,
+                width: 80,
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "BOOK",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Theme.of(context).accentColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.shopping_basket_outlined,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        "OFERTAS",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
             actions: <Widget>[
               CircleAvatar(
                 backgroundColor: Theme.of(context).accentColor,

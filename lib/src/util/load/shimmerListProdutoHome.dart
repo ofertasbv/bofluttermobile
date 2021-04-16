@@ -40,7 +40,7 @@ class ShimmerLayoutGrid extends StatelessWidget {
 
     return Card(
       child: AnimatedContainer(
-        width: 500,
+        width: 350,
         height: 150,
         alignment: Alignment.center,
         duration: Duration(seconds: 1),
@@ -49,24 +49,11 @@ class ShimmerLayoutGrid extends StatelessWidget {
           border: Border.all(color: Colors.transparent),
           borderRadius: BorderRadius.circular(0),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(1),
-              width: 200,
-              height: 150,
-              color: Colors.grey,
-            ),
-            SizedBox(height: 0),
-            Container(
-              alignment: Alignment.center,
-              width: 300,
-              height: 80,
-              color: Colors.white,
-            )
-          ],
+        child: Container(
+          padding: EdgeInsets.all(1),
+          width: 350,
+          height: 150,
+          color: Colors.grey,
         ),
       ),
     );

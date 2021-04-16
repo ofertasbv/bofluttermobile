@@ -2,6 +2,7 @@ import 'package:bofluttermobile/src/page/categoria/categoria_page.dart';
 import 'package:bofluttermobile/src/page/loja/loja_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
+import 'package:bofluttermobile/src/page/sobre/sobre_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -125,6 +126,22 @@ class DrawerList extends StatelessWidget {
               MaterialPageRoute(
                 builder: (BuildContext context) {
                   return LojaPage();
+                },
+              ),
+            );
+          },
+        ),
+        ListTile(
+          selected: false,
+          leading: Icon(Icons.info_outline),
+          title: Text("Sobre"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return SobrePage();
                 },
               ),
             );

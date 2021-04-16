@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ShimmerListCategoriaHome extends StatelessWidget {
+class ShimmerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int offset = 0;
@@ -22,7 +22,7 @@ class ShimmerListCategoriaHome extends StatelessWidget {
             child: Shimmer.fromColors(
               highlightColor: Colors.white,
               baseColor: Colors.grey[350],
-              child: ShimmerLayoutListCategoriaHome(),
+              child: ShimmerLayoutList(),
               period: Duration(milliseconds: time),
             ),
           );
@@ -32,7 +32,7 @@ class ShimmerListCategoriaHome extends StatelessWidget {
   }
 }
 
-class ShimmerLayoutListCategoriaHome extends StatelessWidget {
+class ShimmerLayoutList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double containerWidth = MediaQuery.of(context).size.width - 150;
@@ -40,8 +40,8 @@ class ShimmerLayoutListCategoriaHome extends StatelessWidget {
 
     return Card(
       child: AnimatedContainer(
-        width: 100,
-        height: 130,
+        width: 350,
+        height: 150,
         alignment: Alignment.center,
         duration: Duration(seconds: 1),
         decoration: BoxDecoration(
@@ -49,18 +49,11 @@ class ShimmerLayoutListCategoriaHome extends StatelessWidget {
           border: Border.all(color: Colors.transparent),
           borderRadius: BorderRadius.circular(0),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(1),
-              child: CircleAvatar(
-                backgroundColor: Colors.grey,
-                radius: 50,
-              ),
-            ),
-          ],
+        child: Container(
+          padding: EdgeInsets.all(1),
+          width: 350,
+          height: 150,
+          color: Colors.grey,
         ),
       ),
     );

@@ -21,7 +21,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
         Column(
           children: <Widget>[
             Container(
-              height: 150,
+              height: 130,
               padding: EdgeInsets.all(0),
               child: CategoriaListHome(),
             ),
@@ -31,24 +31,24 @@ class _CatalogoHomeState extends State<CatalogoHome> {
         Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text("Ofertas em destaque"),
-                  GestureDetector(
-                    child: Text("veja mais"),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return PromocaoPage();
-                          },
-                        ),
-                      );
-                    },
+              child: ListTile(
+                leading: Text("Ofertas em destaque"),
+                trailing: Text(
+                  "veja mais",
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    decoration: TextDecoration.underline,
                   ),
-                ],
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return PromocaoPage();
+                      },
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(height: 10),
@@ -63,24 +63,24 @@ class _CatalogoHomeState extends State<CatalogoHome> {
         Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text("Prouduto em destaque"),
-                  GestureDetector(
-                    child: Text("veja mais"),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return ProdutoPage();
-                          },
-                        ),
-                      );
-                    },
+              child: ListTile(
+                leading: Text("Produto em destaque"),
+                trailing: Text(
+                  "veja mais",
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    decoration: TextDecoration.underline,
                   ),
-                ],
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return ProdutoPage();
+                      },
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(height: 10),

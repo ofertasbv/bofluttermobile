@@ -6,6 +6,7 @@ import 'package:bofluttermobile/src/core/model/produto.dart';
 import 'package:bofluttermobile/src/page/produto/produto_page.dart';
 import 'package:bofluttermobile/src/util/container/container_produto.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
+import 'package:bofluttermobile/src/util/load/shimmerListProdutoHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -50,7 +51,7 @@ class _ProdutoListHomeState extends State<ProdutoListHome>
           }
 
           if (produtos == null) {
-            return CircularProgressorMini();
+            return ShimmerListProdutoHome();
           }
           return RefreshIndicator(
             onRefresh: onRefresh,

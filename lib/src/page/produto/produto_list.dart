@@ -3,6 +3,7 @@ import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
 import 'package:bofluttermobile/src/page/produto/produto_tab.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
+import 'package:bofluttermobile/src/util/load/shimmerList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

@@ -1,5 +1,8 @@
+import 'package:bofluttermobile/src/core/controller/pedidoItem_controller.dart';
 import 'package:bofluttermobile/src/core/controller/produto_controller.dart';
+import 'package:bofluttermobile/src/core/model/pedidoitem.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
+import 'package:bofluttermobile/src/page/pedidoitem/pedito_itens_page.dart';
 import 'package:bofluttermobile/src/page/produto/prduto_view.dart';
 import 'package:bofluttermobile/src/page/produto/produto_info.dart';
 import 'package:bofluttermobile/src/page/produto/produto_page.dart';
@@ -21,6 +24,7 @@ class ProdutoDetalhesTab extends StatefulWidget {
 class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
     with SingleTickerProviderStateMixin {
   var produtoController = GetIt.I.get<ProdutoController>();
+  var pedidoItemController = GetIt.I.get<PedidoItemController>();
 
   AnimationController animationController;
   Animation<double> animation;
@@ -96,7 +100,7 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
             GestureDetector(
               child: CircleAvatar(
                 backgroundColor: Theme.of(context).accentColor,
-                foregroundColor: Colors.white,
+                foregroundColor: Colors.black,
                 child: Stack(
                   alignment: Alignment.topRight,
                   children: <Widget>[
@@ -104,14 +108,7 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                       padding: const EdgeInsets.only(top: 0, right: 0),
                       child: Icon(Icons.shopping_basket),
                     ),
-                    AnimatedBuilder(
-                      animation: animation,
-                      builder: (context, child) {
-                        return Transform.scale(
-                          scale: scaleTween.evaluate(animation),
-                          child: child,
-                        );
-                      },
+                    Container(
                       child: Container(
                         margin: EdgeInsets.only(top: 0, right: 0),
                         width: 18,
@@ -119,7 +116,13 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.black, width: 1),
-                          color: Colors.white.withOpacity(.7),
+                          color: Colors.white.withOpacity(0.7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            (pedidoItemController.itens.length ?? 0).toString(),
+                            style: TextStyle(color: Colors.black87),
+                          ),
                         ),
                       ),
                     )
@@ -127,12 +130,11 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pop();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      // builder: (context) => ItemPage(),
-                      ),
+                    builder: (context) => PedidoItensListPage(),
+                  ),
                 );
               },
             ),
@@ -153,7 +155,7 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                       style: TextStyle(
                         color: Theme.of(context).accentColor,
                         fontWeight: FontWeight.bold,
-                          fontSize: 12,
+                        fontSize: 12,
                       ),
                     ),
                   ),
@@ -231,7 +233,6 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                 ),
               ),
             ),
-
             Flexible(
               fit: FlexFit.tight,
               flex: 1,
@@ -244,7 +245,19 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                 color: Theme.of(context).accentColor,
                 textColor: Colors.white,
                 padding: EdgeInsets.all(0),
-                onPressed: () {},
+                onPressed: () {
+                  if (pedidoItemController
+                      .isExisteItem(new PedidoItem(produto: p))) {
+                    showSnackbar(context, "${p.nome} já existe");
+                  } else {
+                    showSnackbar(context, "${p.nome} adicionado");
+                    setState(() {
+                      pedidoItemController
+                          .adicionar(new PedidoItem(produto: p));
+                      animationController.forward();
+                    });
+                  }
+                },
                 label: Text(
                   "LISTA DE DESEJO".toUpperCase(),
                   style: TextStyle(

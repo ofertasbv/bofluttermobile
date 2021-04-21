@@ -3,7 +3,6 @@ import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
 import 'package:bofluttermobile/src/page/produto/produto_tab.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
-import 'package:bofluttermobile/src/util/load/shimmerList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -90,20 +89,15 @@ class _ProdutoListState extends State<ProdutoList>
     double containerWidth = 250;
     double containerHeight = 20;
 
-    return ListView.separated(
+    return ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: produtos.length,
-      separatorBuilder: (context, index) {
-        return Divider(
-          color: Colors.grey[100],
-        );
-      },
       itemBuilder: (context, index) {
         Produto p = produtos[index];
 
         return GestureDetector(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 0),
+            padding: EdgeInsets.symmetric(vertical: 1),
             child: Container(
               color: Colors.grey[200],
               height: 100,
@@ -170,7 +164,7 @@ class _ProdutoListState extends State<ProdutoList>
                         Chip(
                           backgroundColor: Theme.of(context).accentColor,
                           label: Text(
-                            "R\$ ${formatMoeda.format(p.estoque.valorUnitario)}",
+                            "R\$ ${formatMoeda.format(p.estoque.valorVenda)}",
                             style: TextStyle(
                               color: Colors.grey[100],
                               fontSize: 14,
@@ -181,7 +175,7 @@ class _ProdutoListState extends State<ProdutoList>
                           ),
                         ),
                         Text(
-                          "R\$ ${formatMoeda.format(p.estoque.valorVenda)}",
+                          "R\$ ${formatMoeda.format(p.valorComDesconto)}",
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 14,
@@ -205,6 +199,7 @@ class _ProdutoListState extends State<ProdutoList>
             );
           },
         );
+
       },
     );
   }

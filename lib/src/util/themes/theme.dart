@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 ThemeData getTheme(BuildContext context) {
   return ThemeData(
     tabBarTheme: TabBarTheme(),
     brightness: Brightness.light,
-    primaryColor: Colors.deepPurpleAccent[400],
+    primaryColor: Colors.deepPurpleAccent[800],
     accentColor: Colors.yellow[800],
-    primarySwatch: Colors.amber,
+    primarySwatch: Colors.deepPurple,
     scaffoldBackgroundColor: Colors.grey[100],
+    textTheme: GoogleFonts.latoTextTheme(
+      Theme.of(context).textTheme,
+    ),
     cardTheme: CardTheme(
       elevation: 0,
       color: Colors.white,

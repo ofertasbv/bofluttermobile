@@ -47,9 +47,8 @@ class _LojaDetalhesViewState extends State<LojaDetalhesView> {
                   lojaController.arquivo + p.foto,
                   fit: BoxFit.cover,
                 )
-              : Image.asset(
-                  ConstantApi.urlLogo,
-                  fit: BoxFit.cover,
+              : Container(
+                  color: Colors.grey,
                 ),
         ),
         Container(

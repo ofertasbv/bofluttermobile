@@ -16,6 +16,9 @@ abstract class ProdutoControllerBase with Store {
   }
 
   @observable
+  Produto produtoSelecionado;
+
+  @observable
   String arquivo = ConstantApi.urlArquivoProduto;
 
   @observable
@@ -34,5 +37,11 @@ abstract class ProdutoControllerBase with Store {
   @action
   getAllByNome(String nome) {
     produtos = produtoRepository.getAllByNome(nome).asObservable();
+  }
+
+  @action
+  Future<Produto> getCodigoBarra(String codBarra) async {
+    produtoSelecionado = await produtoRepository.getByCodBarra(codBarra);
+    return produtoSelecionado;
   }
 }

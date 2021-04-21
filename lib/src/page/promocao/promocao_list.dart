@@ -140,11 +140,8 @@ class _PromocaoListState extends State<PromocaoList>
     double containerWidth = 160;
     double containerHeight = 30;
 
-    return ListView.separated(
+    return ListView.builder(
       itemCount: promocoes.length,
-      separatorBuilder: (context, index) {
-        return Divider(color: Colors.grey[200]);
-      },
       itemBuilder: (context, index) {
         Promocao p = promocoes[index];
 

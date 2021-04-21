@@ -1,14 +1,17 @@
 import 'package:bofluttermobile/main.dart';
+import 'package:bofluttermobile/src/core/controller/pedidoItem_controller.dart';
 import 'package:bofluttermobile/src/page/categoria/categoria_list.dart';
 import 'package:bofluttermobile/src/page/home/drawer_list.dart';
 import 'package:bofluttermobile/src/page/home/home.dart';
 import 'package:bofluttermobile/src/page/loja/loja_list.dart';
 import 'package:bofluttermobile/src/page/loja/teste_mapa.dart';
+import 'package:bofluttermobile/src/page/pedidoitem/pedito_itens_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_list.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin<HomePage> {
+  var pedidoItemController = GetIt.I.get<PedidoItemController>();
   var pageController = PageController();
 
   int elementIndex = 0;
@@ -139,7 +143,14 @@ class _HomePageState extends State<HomePage>
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
                             border: Border.all(color: Colors.black, width: 1),
-                            color: Colors.white.withOpacity(.7),
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          child: Center(
+                            child: Text(
+                              (pedidoItemController.itens.length ?? 0)
+                                  .toString(),
+                              style: TextStyle(color: Colors.black87),
+                            ),
                           ),
                         ),
                       )
@@ -150,8 +161,8 @@ class _HomePageState extends State<HomePage>
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        // builder: (context) => ItemPage(),
-                        ),
+                      builder: (context) => PedidoItensListPage(),
+                    ),
                   );
                 },
               ),

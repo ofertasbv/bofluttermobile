@@ -24,13 +24,13 @@ class ContainerProduto extends StatelessWidget {
           Container(
             width: 200,
             height: 150,
-            color: Colors.grey[600].withOpacity(1),
+            color: Colors.grey[300].withOpacity(1),
             padding: EdgeInsets.all(0),
             child: p.foto != null
                 ? Container(
                     width: 200,
                     height: 150,
-                    color: Colors.grey[600].withOpacity(1),
+                    color: Colors.grey[300].withOpacity(1),
                     child: Image.network(
                       "${produtoController.arquivo + p.foto}",
                       width: 200,
@@ -41,11 +41,11 @@ class ContainerProduto extends StatelessWidget {
                 : Container(
                     width: 200,
                     height: 150,
-                    color: Colors.grey[600].withOpacity(1),
-                    child: Image.asset(
-                      ConstantApi.urlLogo,
+                    color: Colors.grey[300].withOpacity(1),
+                    child: Container(
                       width: 200,
                       height: 150,
+                      color: Colors.grey,
                     ),
                   ),
           ),

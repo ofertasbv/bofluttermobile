@@ -21,7 +21,7 @@ class ContainerPromocao extends StatelessWidget {
 
     return GestureDetector(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 0),
+        padding: EdgeInsets.symmetric(vertical: 1),
         child: Container(
           color: Colors.white,
           height: 100,
@@ -112,7 +112,7 @@ class ContainerPromocao extends StatelessWidget {
           ),
         ),
       ),
-      onTap: (){
+      onTap: () {
         filter.promocao = p.id;
         Navigator.push(
           context,

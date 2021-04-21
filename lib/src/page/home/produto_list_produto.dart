@@ -146,7 +146,7 @@ class _ProdutoListHomeState extends State<ProdutoListHome>
                               ),
                             ),
                             subtitle: Text(
-                              "R\$ ${formatMoeda.format(p.estoque.valorVenda)}",
+                              "R\$ ${formatMoeda.format(p.valorComDesconto)}",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context).primaryColor,

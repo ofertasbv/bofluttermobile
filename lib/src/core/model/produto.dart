@@ -20,6 +20,7 @@ class Produto {
   bool destaque;
   String origem;
   double valorTotal;
+  double valorComDesconto;
   SubCategoria subCategoria;
   Promocao promocao;
   Loja loja;
@@ -42,6 +43,7 @@ class Produto {
     this.destaque,
     this.origem,
     this.valorTotal,
+    this.valorComDesconto,
     this.subCategoria,
     this.promocao,
     this.loja,
@@ -65,6 +67,7 @@ class Produto {
     destaque = json['destaque'];
     origem = json['origem'];
     valorTotal = json['valorTotal'];
+    valorComDesconto = json['valorComDesconto'];
 
     subCategoria = json['subCategoria'] != null
         ? new SubCategoria.fromJson(json['subCategoria'])
@@ -119,6 +122,7 @@ class Produto {
 
     data['origem'] = this.origem;
     data['valorTotal'] = this.valorTotal;
+    data['valorComDesconto'] = this.valorComDesconto;
 
     if (this.subCategoria != null) {
       data['subCategoria'] = this.subCategoria.toJson();

@@ -200,21 +200,28 @@ class _ProdutoFilterPageState extends State<ProdutoFilterPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+
                 Container(
-                  height: 100,
+                  height: 50,
                   width: 300,
+                  color: Colors.grey[200],
                   child: builderConteudoListLojas(),
                 ),
+                SizedBox(height: 20),
                 Container(
-                  height: 100,
+                  height: 50,
                   width: 300,
+                  color: Colors.grey[200],
                   child: builderConteudoListPromocaoes(),
                 ),
+                SizedBox(height: 20),
                 Container(
-                  height: 100,
+                  height: 50,
                   width: 300,
+                  color: Colors.grey[200],
                   child: builderConteudoListSubCategorias(),
                 ),
+                SizedBox(height: 20),
                 Container(
                   height: 50,
                   width: 400,

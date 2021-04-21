@@ -150,7 +150,7 @@ class _ProdutoGridState extends State<ProdutoGrid>
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: CircleAvatar(
-                              backgroundColor: Colors.grey[300],
+                              backgroundColor: Colors.grey[100],
                               foregroundColor: Colors.redAccent,
                               radius: 15,
                               child: IconButton(
@@ -199,7 +199,7 @@ class _ProdutoGridState extends State<ProdutoGrid>
                           height: 70,
                           child: ListTile(
                             title: Text(
-                              "R\$ ${formatMoeda.format(p.estoque.valorUnitario)}",
+                              "R\$ ${formatMoeda.format(p.estoque.valorVenda)}",
                               style: TextStyle(
                                 fontSize: 14,
                                 decoration: TextDecoration.lineThrough,
@@ -207,7 +207,7 @@ class _ProdutoGridState extends State<ProdutoGrid>
                               ),
                             ),
                             subtitle: Text(
-                              "R\$ ${formatMoeda.format(p.estoque.valorUnitario - ((p.estoque.valorUnitario * p.promocao.desconto) / 100))}",
+                              "R\$ ${formatMoeda.format(p.valorComDesconto)}",
                               style: TextStyle(
                                 color: Colors.green,
                                 fontWeight: FontWeight.bold,

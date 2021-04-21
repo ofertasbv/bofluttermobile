@@ -2,6 +2,7 @@ import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
 import 'package:bofluttermobile/src/core/controller/cliente_controller.dart';
 import 'package:bofluttermobile/src/core/controller/loja_controller.dart';
 import 'package:bofluttermobile/src/core/controller/pedidoItem_controller.dart';
+import 'package:bofluttermobile/src/core/controller/pedido_controller.dart';
 import 'package:bofluttermobile/src/core/controller/promocao_controller.dart';
 import 'package:bofluttermobile/src/core/controller/seguimento_controller.dart';
 import 'package:bofluttermobile/src/core/controller/subcategoria_cotroller.dart';
@@ -23,6 +24,7 @@ void main() async {
   getIt.registerSingleton<LojaController>(LojaController());
   getIt.registerSingleton<PromocaoController>(PromocaoController());
   getIt.registerSingleton<PedidoItemController>(PedidoItemController());
+  getIt.registerSingleton<PedidoController>(PedidoController());
   getIt.registerSingleton<UsuarioController>(UsuarioController());
   getIt.registerSingleton<ClienteController>(ClienteController());
 

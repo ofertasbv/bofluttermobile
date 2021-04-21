@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:bofluttermobile/src/api/constants/constant_api.dart';
 import 'package:bofluttermobile/src/core/controller/pedidoItem_controller.dart';
 import 'package:bofluttermobile/src/core/model/pedidoitem.dart';
+import 'package:bofluttermobile/src/page/pedido/pedido_create_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_page.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:bofluttermobile/src/util/snackbar/snackbar_global.dart';
@@ -234,7 +235,7 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
               ),
             ),
           ),
-          onDoubleTap: (){
+          onDoubleTap: () {
             showDialogAlert(context, p);
           },
         );
@@ -339,10 +340,10 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
                         } else {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                                // builder: (BuildContext context) {
-                                //   return PedidoCreatePage();
-                                // },
-                                ),
+                              builder: (BuildContext context) {
+                                return PedidoCreatePage();
+                              },
+                            ),
                           );
                         }
                       },

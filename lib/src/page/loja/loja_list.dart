@@ -67,6 +67,14 @@ class _LojaListState extends State<LojaList>
                     onPressed: () => nomeController.clear(),
                     icon: Icon(Icons.clear),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(0)),
+                    borderSide: BorderSide(color: Colors.transparent, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(0)),
+                    borderSide: BorderSide(color: Colors.transparent, width: 2),
+                  ),
                 ),
                 onChanged: filterByNome,
               ),

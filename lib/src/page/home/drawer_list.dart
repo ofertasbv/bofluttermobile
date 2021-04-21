@@ -3,6 +3,7 @@ import 'package:bofluttermobile/src/page/loja/loja_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
 import 'package:bofluttermobile/src/page/sobre/sobre_page.dart';
+import 'package:bofluttermobile/src/page/usuario/usuario_login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +71,22 @@ class DrawerList extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        ListTile(
+          selected: false,
+          leading: Icon(Icons.supervisor_account),
+          title: Text("Minha conta"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return UsuarioLoginPage();
+                },
+              ),
+            );
+          },
         ),
         ListTile(
           selected: false,

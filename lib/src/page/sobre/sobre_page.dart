@@ -68,14 +68,27 @@ class _SobrePageState extends State<SobrePage> {
               ),
             ),
             Expanded(
-              child: Container(
-                height: 300,
-                width: double.infinity,
-                color: Colors.grey[200],
-                child: ListTile(
-                  title: Text("versão 1.0"),
-                  subtitle: Text("todos os direitos reservados"),
-                ),
+              child: Column(
+                children: [
+                  Container(
+                    height: 60,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                    child: ListTile(
+                      title: Text("versão 1.0"),
+                      subtitle: Text("todos os direitos reservados"),
+                    ),
+                  ),
+                  Container(
+                    height: 60,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                    child: ListTile(
+                      title: Text("contato"),
+                      subtitle: Text("bookofertasbr@gmail.com"),
+                    ),
+                  )
+                ],
               ),
             )
           ],

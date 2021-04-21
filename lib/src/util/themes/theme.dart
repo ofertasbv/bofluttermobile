@@ -32,27 +32,6 @@ ThemeData getTheme(BuildContext context) {
         side: BorderSide(color: Colors.transparent),
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(0)),
-        borderSide: BorderSide(color: Colors.transparent, width: 2),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(0)),
-        borderSide: BorderSide(color: Colors.transparent, width: 2),
-      ),
-      labelStyle: TextStyle(color: Colors.grey[600]),
-      prefixStyle: TextStyle(color: Colors.grey[600]),
-      hintStyle: TextStyle(color: Colors.orange),
-      fillColor: Colors.grey[300],
-      focusColor: Colors.red[900],
-      hoverColor: Colors.grey[100],
-      suffixStyle: TextStyle(color: Colors.orange),
-      errorStyle: TextStyle(color: Colors.red),
-      isDense: false,
-      contentPadding: EdgeInsets.all(18),
-    ),
     hintColor: Colors.grey[800],
     iconTheme: IconThemeData(
       color:Colors.grey[400],

@@ -234,6 +234,9 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
               ),
             ),
           ),
+          onDoubleTap: (){
+            showDialogAlert(context, p);
+          },
         );
       },
     );

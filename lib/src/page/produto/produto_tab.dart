@@ -61,8 +61,8 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
 
   @override
   void dispose() {
-    super.dispose();
     animationController.dispose();
+    super.dispose();
   }
 
   showSnackbar(BuildContext context, String texto) {

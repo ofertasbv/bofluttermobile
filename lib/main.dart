@@ -1,9 +1,11 @@
 import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
+import 'package:bofluttermobile/src/core/controller/cliente_controller.dart';
 import 'package:bofluttermobile/src/core/controller/loja_controller.dart';
 import 'package:bofluttermobile/src/core/controller/pedidoItem_controller.dart';
 import 'package:bofluttermobile/src/core/controller/promocao_controller.dart';
 import 'package:bofluttermobile/src/core/controller/seguimento_controller.dart';
 import 'package:bofluttermobile/src/core/controller/subcategoria_cotroller.dart';
+import 'package:bofluttermobile/src/core/controller/usuario_controller.dart';
 import 'package:bofluttermobile/src/page/home/home_page.dart';
 import 'package:bofluttermobile/src/util/themes/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -21,6 +23,8 @@ void main() async {
   getIt.registerSingleton<LojaController>(LojaController());
   getIt.registerSingleton<PromocaoController>(PromocaoController());
   getIt.registerSingleton<PedidoItemController>(PedidoItemController());
+  getIt.registerSingleton<UsuarioController>(UsuarioController());
+  getIt.registerSingleton<ClienteController>(ClienteController());
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -57,4 +61,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

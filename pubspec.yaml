@@ -54,6 +54,12 @@ dependencies:
 
   barcode_flutter: ^1.1.2
 
+  masked_text_input_formatter: ^0.0.1
+  datetime_picker_formfield:
+  flutter_masked_text: ^0.8.0
+  mask_text_input_formatter: ^1.1.0
+  intl:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

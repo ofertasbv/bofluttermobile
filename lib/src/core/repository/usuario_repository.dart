@@ -1,6 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:bofluttermobile/src/api/dio/custon_dio.dart';
 import 'package:bofluttermobile/src/core/model/usuario.dart';
+import 'package:dio/dio.dart';
 
 class UsuarioRepository {
   CustonDio dio = CustonDio();
@@ -61,12 +61,24 @@ class UsuarioRepository {
   }
 
   Future<int> loginToken(Map<String, dynamic> data) async {
-    var response = await dio.client
-        .post("/oauth/token", data: data, options: Options(headers: {}));
+    var response = await dio.client.post(
+      "/oauth/token",
+      data: data,
+      options: Options(
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+          "Authorization": "Bearer bW9iaWxlOm0wYjFsMzA="
+        },
+      ),
+      queryParameters: {
+        "grant_type": "password",
+        "username": "elianeresplandes@gmail.com",
+        "password": "frctads"
+      },
+    );
 
     print(response.data);
     print(response.headers);
-    // print(response.request);
     print(response.statusCode);
 
     return response.statusCode;

@@ -11,6 +11,7 @@ class _SobrePageState extends State<SobrePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        titleSpacing: 0,
         title: Text("Sobre"),
       ),
       body: Container(

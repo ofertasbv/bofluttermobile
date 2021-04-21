@@ -73,7 +73,7 @@ class _UsuarioPesquisaLoginState extends State<UsuarioPesquisaLogin>
       key: scaffoldKey,
       appBar: AppBar(
         elevation: 0,
-        titleSpacing: 50,
+        titleSpacing: 0,
         title: Text("Busca por login"),
       ),
       body: Container(
@@ -98,15 +98,15 @@ class _UsuarioPesquisaLoginState extends State<UsuarioPesquisaLogin>
     return ListView(
       children: <Widget>[
         Container(
-          color: Theme.of(context).accentColor.withOpacity(0.1),
-          padding: EdgeInsets.all(0),
+          color: Theme.of(context).primaryColor.withOpacity(0.1),
+          padding: EdgeInsets.all(10),
           child: ListTile(
             title: Text("Buscar login"),
           ),
         ),
         SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(20),
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -143,7 +143,7 @@ class _UsuarioPesquisaLoginState extends State<UsuarioPesquisaLogin>
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: RaisedButton.icon(
             label: Text("Enviar formulário"),
             icon: Icon(Icons.check),

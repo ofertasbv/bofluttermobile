@@ -87,11 +87,11 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
       key: scaffoldKey,
       appBar: AppBar(
         elevation: 0,
-        titleSpacing: 50,
+        titleSpacing: 0,
         title: p.nome == null ? Text("Cadastro de cliente") : Text(p.nome),
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 100, right: 100, top: 10),
+        padding: EdgeInsets.only(left: 0, right: 0, top: 0),
         child: Card(
           child: Observer(
             builder: (context) {
@@ -124,7 +124,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
       children: <Widget>[
         Container(
           color: Theme.of(context).accentColor.withOpacity(0.1),
-          padding: EdgeInsets.all(0),
+          padding: EdgeInsets.all(10),
           child: ListTile(
             title: Text("faça seu cadastro, é rapido e seguro"),
             trailing: Icon(Icons.person_outline),
@@ -132,332 +132,143 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
         ),
         SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(20),
           child: Form(
             key: controller.formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.all(5),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5),
+                  width: double.infinity,
+                  child: TextFormField(
+                    initialValue: p.nome,
+                    onSaved: (value) => p.nome = value,
+                    validator: (value) =>
+                        value.isEmpty ? "Preencha o nome completo" : null,
+                    decoration: InputDecoration(
+                      labelText: "Nome completo",
+                      hintText: "nome",
+                      prefixIcon: Icon(Icons.people, color: Colors.grey),
+                      suffixIcon: Icon(Icons.close),
                     ),
-                    padding: EdgeInsets.all(5),
-                    child: Column(
-                      children: <Widget>[
-                        Text("Dados Pessoais"),
-                        SizedBox(height: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            RadioListTile(
-                              controlAffinity: ListTileControlAffinity.trailing,
-                              title: Text("PESSOA FISICA"),
-                              value: "FISICA",
-                              groupValue: p.tipoPessoa == null
-                                  ? p.tipoPessoa = tipoPessoa
-                                  : p.tipoPessoa,
-                              onChanged: (String valor) {
-                                setState(() {
-                                  p.tipoPessoa = valor;
-                                  print("resultado: " + p.tipoPessoa);
-                                });
-                              },
-                            ),
-                            RadioListTile(
-                              controlAffinity: ListTileControlAffinity.trailing,
-                              title: Text("PESSOA JURIDICA"),
-                              value: "JURIDICA",
-                              groupValue: p.tipoPessoa == null
-                                  ? p.tipoPessoa = tipoPessoa
-                                  : p.tipoPessoa,
-                              onChanged: (String valor) {
-                                setState(() {
-                                  p.tipoPessoa = valor;
-                                  print("resultado: " + p.tipoPessoa);
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType: TextInputType.text,
+                    maxLength: 50,
                   ),
                 ),
                 SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.all(5),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5),
+                  width: double.infinity,
+                  child: TextFormField(
+                    initialValue: p.cpf,
+                    onSaved: (value) => p.cpf = value,
+                    validator: (value) =>
+                        value.isEmpty ? "Preencha o cpf" : null,
+                    decoration: InputDecoration(
+                      labelText: "cpf",
+                      hintText: "cpf",
+                      prefixIcon: Icon(Icons.contact_mail, color: Colors.grey),
+                      suffixIcon: Icon(Icons.close),
                     ),
-                    padding: EdgeInsets.all(5),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 15),
-                        Text("Genero sexual"),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            RadioListTile(
-                              controlAffinity: ListTileControlAffinity.trailing,
-                              title: Text("MASCULINO"),
-                              value: "MASCULINO",
-                              groupValue:
-                                  p.sexo == null ? p.sexo = sexo : p.sexo,
-                              onChanged: (String valor) {
-                                setState(() {
-                                  p.sexo = valor;
-                                  print("sexo: " + p.sexo);
-                                });
-                              },
-                            ),
-                            RadioListTile(
-                              controlAffinity: ListTileControlAffinity.trailing,
-                              title: Text("FEMININO"),
-                              value: "FEMININO",
-                              groupValue:
-                                  p.sexo == null ? p.sexo = sexo : p.sexo,
-                              onChanged: (String valor) {
-                                setState(() {
-                                  p.sexo = valor;
-                                  print("sexo: " + p.sexo);
-                                });
-                              },
-                            ),
-                            RadioListTile(
-                              controlAffinity: ListTileControlAffinity.trailing,
-                              title: Text("OUTRO"),
-                              value: "OUTRO",
-                              groupValue:
-                                  p.sexo == null ? p.sexo = sexo : p.sexo,
-                              onChanged: (String valor) {
-                                setState(() {
-                                  p.sexo = valor;
-                                  print("sexo: " + p.sexo);
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    inputFormatters: [maskFormatterCPF],
+                    keyboardType: TextInputType.number,
+                    maxLength: 14,
                   ),
                 ),
                 SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.all(5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: 500,
-                        child: TextFormField(
-                          initialValue: p.nome,
-                          onSaved: (value) => p.nome = value,
-                          validator: (value) =>
-                              value.isEmpty ? "Preencha o nome completo" : null,
-                          decoration: InputDecoration(
-                            labelText: "Nome completo",
-                            hintText: "nome",
-                            prefixIcon: Icon(Icons.people, color: Colors.grey),
-                            suffixIcon: Icon(Icons.close),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.lime[900]),
-                              gapPadding: 1,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType: TextInputType.text,
-                          maxLength: 50,
-                        ),
-                      ),
-                      Container(
-                        width: 500,
-                        child: TextFormField(
-                          initialValue: p.cpf,
-                          onSaved: (value) => p.cpf = value,
-                          validator: (value) =>
-                              value.isEmpty ? "Preencha o cpf" : null,
-                          decoration: InputDecoration(
-                            labelText: "cpf",
-                            hintText: "cpf",
-                            prefixIcon:
-                                Icon(Icons.contact_mail, color: Colors.grey),
-                            suffixIcon: Icon(Icons.close),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.lime[900]),
-                              gapPadding: 1,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          inputFormatters: [maskFormatterCPF],
-                          keyboardType: TextInputType.number,
-                          maxLength: 14,
-                        ),
-                      ),
-                    ],
+                  width: double.infinity,
+                  child: TextFormField(
+                    initialValue: p.telefone,
+                    onSaved: (value) => p.telefone = value,
+                    validator: (value) =>
+                        value.isEmpty ? "Preencha o telefone" : null,
+                    decoration: InputDecoration(
+                      labelText: "Telefone",
+                      hintText: "Telefone celular",
+                      prefixIcon: Icon(Icons.phone, color: Colors.grey),
+                      suffixIcon: Icon(Icons.close),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType: TextInputType.phone,
+                    inputFormatters: [maskFormatterCelular],
+                    maxLength: 50,
                   ),
                 ),
+                SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.all(5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: 500,
-                        child: TextFormField(
-                          initialValue: p.telefone,
-                          onSaved: (value) => p.telefone = value,
-                          validator: (value) =>
-                              value.isEmpty ? "Preencha o telefone" : null,
-                          decoration: InputDecoration(
-                            labelText: "Telefone",
-                            hintText: "Telefone celular",
-                            prefixIcon: Icon(Icons.phone, color: Colors.grey),
-                            suffixIcon: Icon(Icons.close),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.lime[900]),
-                              gapPadding: 1,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType: TextInputType.phone,
-                          inputFormatters: [maskFormatterCelular],
-                          maxLength: 50,
-                        ),
-                      ),
-                      Container(
-                        width: 500,
-                        child: TextFormField(
-                          initialValue: p.usuario.email,
-                          onSaved: (value) => p.usuario.email = value,
-                          validator: validateEmail,
-                          decoration: InputDecoration(
-                            labelText: "Email",
-                            hintText: "Email",
-                            prefixIcon: Icon(Icons.email, color: Colors.grey),
-                            suffixIcon: Icon(Icons.close),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.lime[900]),
-                              gapPadding: 1,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType: TextInputType.emailAddress,
-                          maxLength: 50,
-                        ),
-                      ),
-                    ],
+                  width: double.infinity,
+                  child: TextFormField(
+                    initialValue: p.usuario.email,
+                    onSaved: (value) => p.usuario.email = value,
+                    validator: validateEmail,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      hintText: "Email",
+                      prefixIcon: Icon(Icons.email, color: Colors.grey),
+                      suffixIcon: Icon(Icons.close),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType: TextInputType.emailAddress,
+                    maxLength: 50,
                   ),
                 ),
+                SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.all(5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: 500,
-                        child: TextFormField(
-                          controller: senhaController,
-                          onSaved: (value) => p.usuario.senha = value,
-                          validator: validateSenha,
-                          decoration: InputDecoration(
-                            labelText: "Senha",
-                            hintText: "Senha",
-                            prefixIcon:
-                                Icon(Icons.security, color: Colors.grey),
-                            suffixIcon: IconButton(
-                              icon: clienteController.senhaVisivel == true
-                                  ? Icon(Icons.visibility_outlined,
-                                      color: Colors.grey)
-                                  : Icon(Icons.visibility_off_outlined,
-                                      color: Colors.grey),
-                              onPressed: () {
-                                clienteController.visualizarSenha();
-                              },
-                            ),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.lime[900]),
-                              gapPadding: 1,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType: TextInputType.text,
-                          obscureText: !clienteController.senhaVisivel,
-                          maxLength: 8,
-                        ),
+                  width: double.infinity,
+                  child: TextFormField(
+                    controller: senhaController,
+                    onSaved: (value) => p.usuario.senha = value,
+                    validator: validateSenha,
+                    decoration: InputDecoration(
+                      labelText: "Senha",
+                      hintText: "Senha",
+                      prefixIcon: Icon(Icons.security, color: Colors.grey),
+                      suffixIcon: IconButton(
+                        icon: clienteController.senhaVisivel == true
+                            ? Icon(Icons.visibility_outlined,
+                                color: Colors.grey)
+                            : Icon(Icons.visibility_off_outlined,
+                                color: Colors.grey),
+                        onPressed: () {
+                          clienteController.visualizarSenha();
+                        },
                       ),
-                      Container(
-                        width: 500,
-                        child: TextFormField(
-                          controller: confirmaSenhaController,
-                          validator: validateSenha,
-                          decoration: InputDecoration(
-                            labelText: "Confirma senha",
-                            hintText: "Confirma senha",
-                            prefixIcon:
-                                Icon(Icons.security, color: Colors.grey),
-                            suffixIcon: IconButton(
-                              icon: clienteController.senhaVisivel == true
-                                  ? Icon(Icons.visibility_outlined,
-                                      color: Colors.grey)
-                                  : Icon(Icons.visibility_off_outlined,
-                                      color: Colors.grey),
-                              onPressed: () {
-                                clienteController.visualizarSenha();
-                              },
-                            ),
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.lime[900]),
-                              gapPadding: 1,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType: TextInputType.text,
-                          obscureText: !clienteController.senhaVisivel,
-                          maxLength: 8,
-                        ),
-                      ),
-                    ],
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType: TextInputType.text,
+                    obscureText: !clienteController.senhaVisivel,
+                    maxLength: 8,
                   ),
                 ),
-                SizedBox(height: 0),
+                SizedBox(height: 10),
+                Container(
+                  width: double.infinity,
+                  child: TextFormField(
+                    controller: confirmaSenhaController,
+                    validator: validateSenha,
+                    decoration: InputDecoration(
+                      labelText: "Confirma senha",
+                      hintText: "Confirma senha",
+                      prefixIcon: Icon(Icons.security, color: Colors.grey),
+                      suffixIcon: IconButton(
+                        icon: clienteController.senhaVisivel == true
+                            ? Icon(Icons.visibility_outlined,
+                                color: Colors.grey)
+                            : Icon(Icons.visibility_off_outlined,
+                                color: Colors.grey),
+                        onPressed: () {
+                          clienteController.visualizarSenha();
+                        },
+                      ),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType: TextInputType.text,
+                    obscureText: !clienteController.senhaVisivel,
+                    maxLength: 8,
+                  ),
+                ),
               ],
             ),
           ),

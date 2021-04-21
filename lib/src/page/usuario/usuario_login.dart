@@ -113,7 +113,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(20),
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -180,7 +180,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: RaisedButton.icon(
             label: Text("Entrar"),
             icon: Icon(Icons.check),
@@ -208,7 +208,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: RaisedButton.icon(
             color: Colors.grey[300],
             icon: Icon(Icons.account_circle_outlined),

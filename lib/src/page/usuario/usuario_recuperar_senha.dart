@@ -97,14 +97,14 @@ class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> with Logi
       children: <Widget>[
         Container(
           color: Theme.of(context).accentColor.withOpacity(0.1),
-          padding: EdgeInsets.all(0),
+          padding: EdgeInsets.all(10),
           child: ListTile(
             title: Text("Cadastrar nova senha"),
           ),
         ),
         SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(20),
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -216,7 +216,7 @@ class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> with Logi
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: RaisedButton.icon(
             label: Text("Enviar formulário"),
             icon: Icon(Icons.check),
@@ -253,7 +253,6 @@ class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> with Logi
 
 class Controller {
   var formKey = GlobalKey<FormState>();
-
   bool validate() {
     var form = formKey.currentState;
     if (form.validate()) {

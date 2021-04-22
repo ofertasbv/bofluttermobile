@@ -4,6 +4,7 @@ import 'package:bofluttermobile/src/core/controller/produto_controller.dart';
 import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
 import 'package:bofluttermobile/src/page/produto/produto_page.dart';
+import 'package:bofluttermobile/src/page/produto/produto_tab.dart';
 import 'package:bofluttermobile/src/util/container/container_produto.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:bofluttermobile/src/util/load/shimmerListProdutoHome.dart';
@@ -166,7 +167,7 @@ class _ProdutoListHomeState extends State<ProdutoListHome>
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (BuildContext context) {
-                  return ProdutoPage();
+                  return ProdutoDetalhesTab(p);
                 },
               ),
             );

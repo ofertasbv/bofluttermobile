@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bofluttermobile/src/core/controller/loja_controller.dart';
 import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/loja.dart';
+import 'package:bofluttermobile/src/page/loja/loja_detalhes_tab.dart';
 import 'package:bofluttermobile/src/page/produto/produto_page.dart';
 import 'package:bofluttermobile/src/util/container/container_loja.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
@@ -131,6 +132,15 @@ class _LojaListState extends State<LojaList>
             padding: EdgeInsets.symmetric(vertical: 0),
             child: ContainerLoja(lojaController, p),
           ),
+          onDoubleTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return LojaDetalhesTab(p);
+                },
+              ),
+            );
+          },
           onTap: () {
             filter.loja = p.id;
             Navigator.of(context).push(

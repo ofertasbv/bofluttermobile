@@ -1,5 +1,6 @@
 import 'package:bofluttermobile/src/page/categoria/categoria_page.dart';
 import 'package:bofluttermobile/src/page/loja/loja_page.dart';
+import 'package:bofluttermobile/src/page/loja/teste_mapa.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
 import 'package:bofluttermobile/src/page/sobre/sobre_page.dart';
@@ -143,6 +144,22 @@ class DrawerList extends StatelessWidget {
               MaterialPageRoute(
                 builder: (BuildContext context) {
                   return LojaPage();
+                },
+              ),
+            );
+          },
+        ),
+        ListTile(
+          selected: false,
+          leading: Icon(Icons.location_on_outlined),
+          title: Text("Encontrar lojas"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return TesteMapa();
                 },
               ),
             );

@@ -1,4 +1,5 @@
 import 'package:bofluttermobile/src/core/controller/loja_controller.dart';
+import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/loja.dart';
 import 'package:bofluttermobile/src/page/loja/loja_detalhes-view.dart';
 import 'package:bofluttermobile/src/page/loja/loja_detalhes_info.dart';
@@ -22,6 +23,7 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
     with SingleTickerProviderStateMixin {
   var lojaController = GetIt.I.get<LojaController>();
   Loja loja;
+  ProdutoFilter produtoFilter = ProdutoFilter();
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -97,12 +99,12 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
             ],
           ),
         ),
-        bottomNavigationBar: buildBottomNavigationBar(context),
+        bottomNavigationBar: buildBottomNavigationBar(context, loja),
       ),
     );
   }
 
-  buildBottomNavigationBar(BuildContext context) {
+  buildBottomNavigationBar(BuildContext context, Loja loja) {
     return Container(
       padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
       color: Colors.grey[100],
@@ -157,10 +159,11 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
                 textColor: Colors.white,
                 padding: EdgeInsets.all(0),
                 onPressed: () {
+                  produtoFilter.loja = loja.id;
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return ProdutoPage();
+                        return ProdutoPage(filter: produtoFilter);
                       },
                     ),
                   );

@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:bofluttermobile/src/core/controller/usuario_controller.dart';
+import 'package:bofluttermobile/src/core/model/cliente.dart';
 import 'package:bofluttermobile/src/core/model/usuario.dart';
 import 'package:bofluttermobile/src/page/cliente/cliente_create_page.dart';
-import 'package:bofluttermobile/src/page/home/home_page.dart';
+import 'package:bofluttermobile/src/page/usuario/usuario_perfil_cliente.dart';
 import 'package:bofluttermobile/src/page/usuario/usuario_pesquisa_login.dart';
 import 'package:bofluttermobile/src/util/dialogs/dialogs.dart';
+import 'package:bofluttermobile/src/util/snackbar/snackbar_global.dart';
 import 'package:bofluttermobile/src/util/validador/validador_login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +31,9 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
+
   @override
   void initState() {
     if (u == null) {
@@ -45,16 +50,9 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
     super.didChangeDependencies();
   }
 
-  showSnackbar(BuildContext context, String content) {
-    scaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        content: Text(content),
-        action: SnackBarAction(
-          label: "OK",
-          onPressed: () {},
-        ),
-      ),
-    );
+  showSnackbar(BuildContext context, String texto) {
+    final snackbar = SnackBar(content: Text(texto));
+    GlobalScaffold.instance.showSnackbar(snackbar);
   }
 
   @override
@@ -191,16 +189,15 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
                   Timer(Duration(seconds: 3), () {
                     usuarioController.loginToken(u).then((usuario) {
                       if (usuario != null) {
-                        print("Status: ${usuario}");
+                        buildPush(context);
                       } else {
-                        print("Erro: login/senha inválido");
+                        showSnackbar(context, "Erro: login/senha inválido");
                         emailController.clear();
                         senhaController.clear();
                       }
-                      // print("US: ${us.id}");
+                      print("login...");
                     });
                     Navigator.pop(context);
-                    buildPush(context);
                   });
                 }
               }
@@ -261,7 +258,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
     return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => HomePage(),
+        builder: (context) => UsuarioPerfilCliente(),
       ),
     );
   }

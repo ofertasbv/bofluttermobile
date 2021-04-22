@@ -1,4 +1,5 @@
 import 'package:bofluttermobile/src/page/usuario/usuario_login.dart';
+import 'package:bofluttermobile/src/util/snackbar/snackbar_global.dart';
 import 'package:flutter/material.dart';
 
 class UsuarioLoginPage extends StatefulWidget {
@@ -7,11 +8,12 @@ class UsuarioLoginPage extends StatefulWidget {
 }
 
 class _UsuarioLoginPageState extends State<UsuarioLoginPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: GlobalScaffold.instance.scaffkey,
       appBar: AppBar(
-        titleSpacing: 0,
         elevation: 0,
         title: Text("Login"),
       ),

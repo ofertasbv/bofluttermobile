@@ -11,21 +11,24 @@ class ContainerLoja extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      isThreeLine: false,
-      leading: Container(
-        padding: EdgeInsets.all(1),
-        child: p.foto != null
-            ? CircleAvatar(
-                backgroundColor: Colors.grey[100],
-                radius: 20,
-                backgroundImage: NetworkImage(
-                  "${lojaController.arquivo + p.foto}",
+        isThreeLine: false,
+        leading: Container(
+          padding: EdgeInsets.all(1),
+          child: p.foto != null
+              ? CircleAvatar(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  radius: 20,
+                  backgroundImage: NetworkImage(
+                    "${lojaController.arquivo + p.foto}",
+                  ),
+                )
+              : CircleAvatar(
+                  radius: 20,
+                  child: Icon(Icons.location_on_outlined),
                 ),
-              )
-            : CircleAvatar(radius: 20),
-      ),
-      title: Text(p.nome),
-      subtitle: Text("${p.telefone}"),
+        ),
+        title: Text(p.nome),
+        subtitle: Text("${p.telefone}"),
         trailing: Container(
           height: 80,
           width: 50,
@@ -33,7 +36,6 @@ class ContainerLoja extends StatelessWidget {
             backgroundColor: Colors.grey[200],
             child: Text("${p.produtos.length}"),
           ),
-        )
-    );
+        ));
   }
 }

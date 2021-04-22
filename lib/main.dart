@@ -8,6 +8,7 @@ import 'package:bofluttermobile/src/core/controller/seguimento_controller.dart';
 import 'package:bofluttermobile/src/core/controller/subcategoria_cotroller.dart';
 import 'package:bofluttermobile/src/core/controller/usuario_controller.dart';
 import 'package:bofluttermobile/src/page/home/home_page.dart';
+import 'package:bofluttermobile/src/page/usuario/usuario_login_page.dart';
 import 'package:bofluttermobile/src/util/themes/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:bofluttermobile/src/core/controller/produto_controller.dart';
@@ -34,7 +35,7 @@ void main() async {
       // cor da barra superior
       statusBarIconBrightness: Brightness.light,
       // ícones da barra superior
-      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.grey[100],
       // cor da barra inferior
       systemNavigationBarIconBrightness: Brightness.dark,
       //

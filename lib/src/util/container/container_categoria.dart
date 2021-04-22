@@ -16,7 +16,7 @@ class ContainerCategoria extends StatelessWidget {
         padding: EdgeInsets.all(1),
         child: p.foto != null
             ? CircleAvatar(
-                backgroundColor: Colors.grey[100],
+                backgroundColor: Theme.of(context).primaryColor,
                 radius: 20,
                 backgroundImage: NetworkImage(
                   "${categoriaController.arquivo + p.foto}",

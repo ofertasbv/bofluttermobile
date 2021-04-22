@@ -190,11 +190,11 @@ class _PedidoCreatePageState extends State<PedidoCreatePage>
       key: scaffoldKey,
       appBar: AppBar(
         elevation: 0,
-        titleSpacing: 50,
+        titleSpacing: 0,
         title: Text("Pedido cadastros"),
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 100, right: 100, top: 10),
+        padding: EdgeInsets.only(left: 0, right: 0, top: 0),
         child: Card(
           child: Observer(
             builder: (context) {
@@ -250,252 +250,212 @@ class _PedidoCreatePageState extends State<PedidoCreatePage>
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        initialValue: p.descricao,
-                        onSaved: (value) => p.descricao = value,
-                        validator: validateDescricao,
-                        decoration: InputDecoration(
-                          labelText: "Descrição",
-                          hintText: "Descrição",
-                          prefixIcon: Icon(Icons.edit, color: Colors.grey),
-                          suffixIcon: Icon(Icons.close),
-                        ),
-                        onEditingComplete: () => focus.nextFocus(),
-                        keyboardType: TextInputType.text,
-                        maxLength: 200,
-                        maxLines: null,
-                        //initialValue: c.nome,
-                      ),
-                    ],
+                  child: TextFormField(
+                    initialValue: p.descricao,
+                    onSaved: (value) => p.descricao = value,
+                    validator: validateDescricao,
+                    decoration: InputDecoration(
+                      labelText: "Descrição",
+                      hintText: "Descrição",
+                      prefixIcon: Icon(Icons.edit, color: Colors.grey),
+                      suffixIcon: Icon(Icons.close),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType: TextInputType.text,
+                    maxLength: 200,
+                    maxLines: null,
                   ),
                 ),
                 Container(
-                  height: 100,
                   padding: EdgeInsets.all(10),
                   width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: TextFormField(
-                          controller: valorInicialCotroller,
-                          onSaved: (value) {
-                            p.valorInicial = double.tryParse(value);
-                          },
-                          validator: validateDesconto,
-                          decoration: InputDecoration(
-                            labelText: "Valor inicial",
-                            hintText: "Valor inicial",
-                            prefixIcon: Icon(
-                              Icons.monetization_on_outlined,
-                              color: Colors.grey,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () => valorInicialCotroller.clear(),
-                              icon: Icon(Icons.clear),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType:
-                              TextInputType.numberWithOptions(decimal: true),
-                          maxLength: 6,
-                        ),
+                  color: Colors.transparent,
+                  child: TextFormField(
+                    controller: valorInicialCotroller,
+                    onSaved: (value) {
+                      p.valorInicial = double.tryParse(value);
+                    },
+                    validator: validateDesconto,
+                    decoration: InputDecoration(
+                      labelText: "Valor inicial",
+                      hintText: "Valor inicial",
+                      prefixIcon: Icon(
+                        Icons.monetization_on_outlined,
+                        color: Colors.grey,
                       ),
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: TextFormField(
-                          controller: valorFreteCotroller,
-                          onSaved: (value) {
-                            p.valorFrete = double.tryParse(value);
-                          },
-                          validator: validateValorFrete,
-                          decoration: InputDecoration(
-                            labelText: "Valor de entrega",
-                            hintText: "Valor de entrega",
-                            prefixIcon: Icon(
-                              Icons.monetization_on_outlined,
-                              color: Colors.grey,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () => valorFreteCotroller.clear(),
-                              icon: Icon(Icons.clear),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType:
-                              TextInputType.numberWithOptions(decimal: true),
-                          maxLength: 6,
-                        ),
-                      )
-                    ],
+                      suffixIcon: IconButton(
+                        onPressed: () => valorInicialCotroller.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    maxLength: 6,
                   ),
                 ),
                 Container(
-                  height: 100,
                   padding: EdgeInsets.all(10),
                   width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: TextFormField(
-                          controller: descontoCotroller,
-                          onSaved: (value) {
-                            p.valorDesconto = double.tryParse(value);
-                          },
-                          validator: validateDesconto,
-                          onChanged: (percentual) {
-                            setState(() {
-                              double valor = (double.tryParse(
-                                      valorInicialCotroller.text) -
-                                  ((double.tryParse(
-                                              valorInicialCotroller.text) *
-                                          double.tryParse(
-                                              descontoCotroller.text)) /
-                                      100) +
-                                  double.tryParse(valorFreteCotroller.text));
-                              valorTotalCotroller.text =
-                                  valor.toStringAsFixed(2);
-                            });
-                          },
-                          decoration: InputDecoration(
-                            labelText: "Percentual de desconto",
-                            hintText: "Percentual de desconto",
-                            prefixIcon: Icon(
-                              Icons.monetization_on_outlined,
-                              color: Colors.grey,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () => descontoCotroller.clear(),
-                              icon: Icon(Icons.clear),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType:
-                              TextInputType.numberWithOptions(decimal: true),
-                          maxLength: 10,
-                        ),
+                  color: Colors.transparent,
+                  child: TextFormField(
+                    controller: valorFreteCotroller,
+                    onSaved: (value) {
+                      p.valorFrete = double.tryParse(value);
+                    },
+                    validator: validateValorFrete,
+                    decoration: InputDecoration(
+                      labelText: "Valor de entrega",
+                      hintText: "Valor de entrega",
+                      prefixIcon: Icon(
+                        Icons.monetization_on_outlined,
+                        color: Colors.grey,
                       ),
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: TextFormField(
-                          controller: valorTotalCotroller,
-                          onSaved: (value) {
-                            p.valorTotal = double.tryParse(value);
-                          },
-                          validator: validateValorTotal,
-                          decoration: InputDecoration(
-                            labelText: "Valor Total",
-                            hintText: "Valor total",
-                            prefixIcon: Icon(
-                              Icons.monetization_on_outlined,
-                              color: Colors.grey,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () => valorTotalCotroller.clear(),
-                              icon: Icon(Icons.clear),
-                            ),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          keyboardType:
-                              TextInputType.numberWithOptions(decimal: true),
-                          maxLength: 6,
-                        ),
-                      )
-                    ],
+                      suffixIcon: IconButton(
+                        onPressed: () => valorFreteCotroller.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    maxLength: 6,
                   ),
                 ),
                 Container(
-                  height: 100,
                   padding: EdgeInsets.all(10),
                   width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: DateTimeField(
-                          initialValue: p.dataRegistro,
-                          format: dateFormat,
-                          validator: validateDateEntrega,
-                          onSaved: (value) => p.dataRegistro = value,
-                          decoration: InputDecoration(
-                            labelText: "data de resgistro",
-                            hintText: "99-09-9999",
-                            prefixIcon: Icon(Icons.calendar_today),
-                            suffixIcon: Icon(Icons.close),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          onShowPicker: (context, currentValue) {
-                            return showDatePicker(
-                              context: context,
-                              firstDate: DateTime(2000),
-                              initialDate: currentValue ?? DateTime.now(),
-                              locale: Locale('pt', 'BR'),
-                              lastDate: DateTime(2030),
-                            );
-                          },
-                          maxLength: 10,
-                        ),
+                  color: Colors.transparent,
+                  child: TextFormField(
+                    controller: descontoCotroller,
+                    onSaved: (value) {
+                      p.valorDesconto = double.tryParse(value);
+                    },
+                    validator: validateDesconto,
+                    onChanged: (percentual) {
+                      setState(() {
+                        double valor = (double.tryParse(
+                                valorInicialCotroller.text) -
+                            ((double.tryParse(valorInicialCotroller.text) *
+                                    double.tryParse(descontoCotroller.text)) /
+                                100) +
+                            double.tryParse(valorFreteCotroller.text));
+                        valorTotalCotroller.text = valor.toStringAsFixed(2);
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: "Percentual de desconto",
+                      hintText: "Percentual de desconto",
+                      prefixIcon: Icon(
+                        Icons.monetization_on_outlined,
+                        color: Colors.grey,
                       ),
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: DateTimeField(
-                          initialValue: p.dataEntrega,
-                          format: dateFormat,
-                          validator: validateDateHoraEntrega,
-                          onSaved: (value) => p.dataEntrega = value,
-                          decoration: InputDecoration(
-                            labelText: "data e hora da entrega",
-                            hintText: "99-09-9999",
-                            prefixIcon: Icon(Icons.calendar_today),
-                            suffixIcon: Icon(Icons.close),
-                          ),
-                          onEditingComplete: () => focus.nextFocus(),
-                          onShowPicker: (context, currentValue) {
-                            return showDatePicker(
-                              context: context,
-                              firstDate: DateTime(2000),
-                              initialDate: currentValue ?? DateTime.now(),
-                              locale: Locale('pt', 'BR'),
-                              lastDate: DateTime(2030),
-                            );
-                          },
-                          maxLength: 10,
-                        ),
-                      )
-                    ],
+                      suffixIcon: IconButton(
+                        onPressed: () => descontoCotroller.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    maxLength: 10,
                   ),
                 ),
                 Container(
-                  height: 100,
                   padding: EdgeInsets.all(10),
                   width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: builderConteudoListClientes(),
+                  color: Colors.transparent,
+                  child: TextFormField(
+                    controller: valorTotalCotroller,
+                    onSaved: (value) {
+                      p.valorTotal = double.tryParse(value);
+                    },
+                    validator: validateValorTotal,
+                    decoration: InputDecoration(
+                      labelText: "Valor Total",
+                      hintText: "Valor total",
+                      prefixIcon: Icon(
+                        Icons.monetization_on_outlined,
+                        color: Colors.grey,
                       ),
-                      Container(
-                        width: 500,
-                        color: Colors.grey[200],
-                        child: builderConteudoListLojas(),
-                      )
-                    ],
+                      suffixIcon: IconButton(
+                        onPressed: () => valorTotalCotroller.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    maxLength: 6,
                   ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: DateTimeField(
+                    initialValue: p.dataRegistro,
+                    format: dateFormat,
+                    validator: validateDateEntrega,
+                    onSaved: (value) => p.dataRegistro = value,
+                    decoration: InputDecoration(
+                      labelText: "data de resgistro",
+                      hintText: "99-09-9999",
+                      prefixIcon: Icon(Icons.calendar_today),
+                      suffixIcon: Icon(Icons.close),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    onShowPicker: (context, currentValue) {
+                      return showDatePicker(
+                        context: context,
+                        firstDate: DateTime(2000),
+                        initialDate: currentValue ?? DateTime.now(),
+                        locale: Locale('pt', 'BR'),
+                        lastDate: DateTime(2030),
+                      );
+                    },
+                    maxLength: 10,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: DateTimeField(
+                    initialValue: p.dataEntrega,
+                    format: dateFormat,
+                    validator: validateDateHoraEntrega,
+                    onSaved: (value) => p.dataEntrega = value,
+                    decoration: InputDecoration(
+                      labelText: "data e hora da entrega",
+                      hintText: "99-09-9999",
+                      prefixIcon: Icon(Icons.calendar_today),
+                      suffixIcon: Icon(Icons.close),
+                    ),
+                    onEditingComplete: () => focus.nextFocus(),
+                    onShowPicker: (context, currentValue) {
+                      return showDatePicker(
+                        context: context,
+                        firstDate: DateTime(2000),
+                        initialDate: currentValue ?? DateTime.now(),
+                        locale: Locale('pt', 'BR'),
+                        lastDate: DateTime(2030),
+                      );
+                    },
+                    maxLength: 10,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: builderConteudoListClientes(),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: builderConteudoListLojas(),
                 ),
                 Container(
                   padding: EdgeInsets.all(10),

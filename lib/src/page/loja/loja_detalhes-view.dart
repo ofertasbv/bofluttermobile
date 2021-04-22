@@ -61,7 +61,7 @@ class _LojaDetalhesViewState extends State<LojaDetalhesView> {
                 title: Text(p.nome),
                 subtitle: Text("${p.telefone}"),
                 trailing: CircleAvatar(
-                  backgroundColor: Colors.blue[400],
+                  backgroundColor: Theme.of(context).primaryColor,
                   foregroundColor: Colors.white,
                   child: IconButton(
                     onPressed: () {},

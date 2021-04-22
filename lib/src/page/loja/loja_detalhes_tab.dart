@@ -4,6 +4,7 @@ import 'package:bofluttermobile/src/page/loja/loja_detalhes-view.dart';
 import 'package:bofluttermobile/src/page/loja/loja_detalhes_info.dart';
 import 'package:bofluttermobile/src/page/produto/produto_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
+import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -54,12 +55,12 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          titleSpacing: 50,
+          titleSpacing: 0,
           elevation: 0,
           title: Text(loja.nome),
           actions: <Widget>[
             CircleAvatar(
-              backgroundColor: Theme.of(context).accentColor.withOpacity(0.4),
+              backgroundColor: Theme.of(context).accentColor,
               foregroundColor: Colors.white,
               child: IconButton(
                 icon: Icon(Icons.search_outlined),
@@ -71,7 +72,7 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
                 },
               ),
             ),
-            SizedBox(width: 100),
+            SizedBox(width: 10),
           ],
           bottom: TabBar(
             indicatorPadding: EdgeInsets.only(right: 6, left: 6),
@@ -87,7 +88,7 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
           ),
         ),
         body: Container(
-          padding: EdgeInsets.only(left: 100, right: 100, top: 10),
+          padding: EdgeInsets.only(left: 0, right: 0, top: 0),
           child: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
@@ -103,32 +104,34 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
 
   buildBottomNavigationBar(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
       color: Colors.grey[100],
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 50,
       child: Container(
-        padding: EdgeInsets.all(5),
+        color: Colors.grey[200],
+        padding: EdgeInsets.all(0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Flexible(
               fit: FlexFit.tight,
-              flex: 2,
+              flex: 1,
               child: FlatButton.icon(
                 icon: Icon(Icons.list_alt),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(0),
-                  side: BorderSide(color: Colors.blue),
+                  side: BorderSide(color: Colors.transparent),
                 ),
-                color: Colors.white,
-                textColor: Colors.blue,
-                padding: EdgeInsets.all(10),
+                color: Theme.of(context).primaryColor,
+                textColor: Colors.white,
+                padding: EdgeInsets.all(0),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return ProdutoPage();
+                        return PromocaoPage();
                       },
                     ),
                   );
@@ -141,21 +144,29 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
                 ),
               ),
             ),
-            SizedBox(width: 10),
             Flexible(
-              flex: 2,
+              fit: FlexFit.tight,
+              flex: 1,
               child: FlatButton.icon(
                 icon: Icon(Icons.shopping_basket),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(0),
-                  side: BorderSide(color: Colors.green),
+                  side: BorderSide(color: Colors.transparent),
                 ),
-                color: Colors.white,
-                textColor: Colors.green,
-                padding: EdgeInsets.all(10),
-                onPressed: () {},
+                color: Theme.of(context).accentColor,
+                textColor: Colors.white,
+                padding: EdgeInsets.all(0),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return ProdutoPage();
+                      },
+                    ),
+                  );
+                },
                 label: Text(
-                  "LISTA DE DESEJO".toUpperCase(),
+                  "VER PRODUTOS".toUpperCase(),
                   style: TextStyle(
                     fontSize: 14.0,
                   ),

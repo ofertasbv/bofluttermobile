@@ -261,24 +261,19 @@ class _TesteMapaState extends State<TesteMapa> {
           child: AnimatedContainer(
             duration: Duration(seconds: 1),
             decoration: BoxDecoration(
-              color: p.nome == selectedCard ? Colors.yellow[200] : Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              color: p.nome == selectedCard ? Colors.yellow[100] : Colors.white,
+              border: Border(
+                left: BorderSide(
+                  width: 4,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
             ),
             width: 240,
             padding: EdgeInsets.all(2),
             margin: EdgeInsets.only(left: 10),
-            child: Row(
+            child: Column(
               children: <Widget>[
-                AspectRatio(
-                  aspectRatio: 0.9,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      ConstantApi.urlArquivoProduto + p.foto,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.all(5),

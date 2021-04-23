@@ -28,7 +28,7 @@ ThemeData getTheme(BuildContext context) {
       alignedDropdown: true,
       hoverColor: Theme.of(context).primaryColor.withOpacity(0.6),
       shape: RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(35),
+        borderRadius: new BorderRadius.circular(10),
         side: BorderSide(color: Colors.transparent),
       ),
     ),

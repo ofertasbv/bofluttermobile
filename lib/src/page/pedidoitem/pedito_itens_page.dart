@@ -54,11 +54,24 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
               }
 
               return CircleAvatar(
+                foregroundColor: Theme.of(context).accentColor,
                 child: Text(
                   (pedidoItemController.itens.length ?? 0).toString(),
                 ),
               );
             },
+          ),
+          SizedBox(width: 5),
+          CircleAvatar(
+            foregroundColor: Theme.of(context).accentColor,
+            child: IconButton(
+              icon: Icon(
+                Icons.refresh,
+              ),
+              onPressed: () {
+                pedidoItemController.getAll();
+              },
+            ),
           ),
           SizedBox(width: 20)
         ],

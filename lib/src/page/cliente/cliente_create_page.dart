@@ -5,8 +5,10 @@ import 'package:bofluttermobile/src/core/controller/cliente_controller.dart';
 import 'package:bofluttermobile/src/core/model/cliente.dart';
 import 'package:bofluttermobile/src/core/model/endereco.dart';
 import 'package:bofluttermobile/src/core/model/usuario.dart';
+import 'package:bofluttermobile/src/page/cliente/sucesso_page.dart';
 import 'package:bofluttermobile/src/page/usuario/usuario_login_page.dart';
 import 'package:bofluttermobile/src/util/dialogs/dialogs.dart';
+import 'package:bofluttermobile/src/util/snackbar/snackbar_global.dart';
 import 'package:bofluttermobile/src/util/validador/validador_pessoa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -69,16 +71,9 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
     super.didChangeDependencies();
   }
 
-  showSnackbar(BuildContext context, String content) {
-    scaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        content: Text(content),
-        action: SnackBarAction(
-          label: "OK",
-          onPressed: () {},
-        ),
-      ),
-    );
+  showSnackbar(BuildContext context, String texto) {
+    final snackbar = SnackBar(content: Text(texto));
+    GlobalScaffold.instance.showSnackbar(snackbar);
   }
 
   @override
@@ -123,14 +118,20 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
     return ListView(
       children: <Widget>[
         Container(
-          color: Theme.of(context).accentColor.withOpacity(0.1),
+          color: Theme.of(context).primaryColor.withOpacity(0.1),
           padding: EdgeInsets.all(10),
           child: ListTile(
-            title: Text("faça seu cadastro, é rapido e seguro"),
+            title: Text("Faça seu cadastro, é rapido e seguro"),
+            subtitle: Text(
+              "Dados obrigatório (*)",
+              style: TextStyle(
+                color: Colors.red,
+              ),
+            ),
             trailing: Icon(Icons.person_outline),
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 0),
         Container(
           padding: EdgeInsets.all(30),
           child: Form(
@@ -146,7 +147,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     validator: (value) =>
                         value.isEmpty ? "Preencha o nome completo" : null,
                     decoration: InputDecoration(
-                      labelText: "Nome completo",
+                      labelText: "Nome completo *",
                       hintText: "nome",
                       suffixIcon: Icon(Icons.close),
                     ),
@@ -164,7 +165,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     validator: (value) =>
                         value.isEmpty ? "Preencha o cpf" : null,
                     decoration: InputDecoration(
-                      labelText: "cpf",
+                      labelText: "Entre com cpf *",
                       hintText: "cpf",
                       suffixIcon: Icon(Icons.close),
                     ),
@@ -183,7 +184,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     validator: (value) =>
                         value.isEmpty ? "Preencha o telefone" : null,
                     decoration: InputDecoration(
-                      labelText: "Telefone",
+                      labelText: "Entre com telefone *",
                       hintText: "Telefone celular",
                       suffixIcon: Icon(Icons.close),
                     ),
@@ -201,7 +202,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     onSaved: (value) => p.usuario.email = value,
                     validator: validateEmail,
                     decoration: InputDecoration(
-                      labelText: "Email",
+                      labelText: "Entre com email *",
                       hintText: "Email",
                       suffixIcon: Icon(Icons.close),
                     ),
@@ -218,7 +219,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     onSaved: (value) => p.usuario.senha = value,
                     validator: validateSenha,
                     decoration: InputDecoration(
-                      labelText: "Senha",
+                      labelText: "Entre com senha *",
                       hintText: "Senha",
                       suffixIcon: IconButton(
                         icon: clienteController.senhaVisivel == true
@@ -244,7 +245,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     controller: confirmaSenhaController,
                     validator: validateSenha,
                     decoration: InputDecoration(
-                      labelText: "Confirma senha",
+                      labelText: "Confirma senha *",
                       hintText: "Confirma senha",
                       suffixIcon: IconButton(
                         icon: clienteController.senhaVisivel == true
@@ -269,7 +270,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.only(left: 30, right: 30, bottom: 10),
           child: RaisedButton.icon(
             label: Text("Enviar formulário"),
             icon: Icon(Icons.check),
@@ -282,6 +283,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                   } else {
                     dialogs.information(context, "prepando para o cadastro...");
                     Timer(Duration(seconds: 3), () {
+                      p.tipoPessoa = tipoPessoa;
                       print("Pessoa: ${p.tipoPessoa}");
                       print("Nome: ${p.nome}");
                       print("CPF: ${p.cpf}");
@@ -290,9 +292,13 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                       print("Senha: ${p.usuario.senha}");
 
                       clienteController.create(p).then((value) {
-                        print("resultado : ${value}");
+                        if (value != null) {
+                          print("resultado : ${value}");
+                          showSnackbar(
+                              context, "cadastro realizado com sucesso!");
+                          buildPush(context);
+                        }
                       });
-                      buildPush(context);
                     });
                   }
                 } else {
@@ -303,6 +309,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     dialogs.information(
                         context, "preparando para o alteração...");
                     Timer(Duration(seconds: 3), () {
+                      p.tipoPessoa = tipoPessoa;
                       print("Pessoa: ${p.tipoPessoa}");
                       print("Nome: ${p.nome}");
                       print("CPF: ${p.cpf}");
@@ -310,8 +317,14 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                       print("Email: ${p.usuario.email}");
                       print("Senha: ${p.usuario.senha}");
 
-                      clienteController.update(p.id, p);
-                      buildPush(context);
+                      clienteController.update(p.id, p).then((value) {
+                        if (value != null) {
+                          print("resultado : ${value}");
+                          showSnackbar(
+                              context, "cadastro alterado com sucesso!");
+                          buildPush(context);
+                        }
+                      });
                     });
                   }
                 }
@@ -321,7 +334,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
         ),
         SizedBox(height: 10),
         Container(
-          padding: EdgeInsets.all(10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -354,13 +366,13 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
   }
 
   buildPush(BuildContext context) {
-    // Navigator.of(context).pop();
-    // return Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => ClientePage(),
-    //   ),
-    // );
+    Navigator.of(context).pop();
+    return Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SucessoPage(),
+      ),
+    );
   }
 
   confirmaSenha() {

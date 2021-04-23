@@ -57,6 +57,18 @@ class _UsuarioPerfilClienteState extends State<UsuarioPerfilCliente> {
       appBar: AppBar(
         title: Text("Meu perfil"),
         elevation: 0,
+        actions: [
+          CircleAvatar(
+            foregroundColor: Theme.of(context).accentColor,
+            child: IconButton(
+              icon: Icon(
+                Icons.refresh,
+              ),
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(width: 10),
+        ],
       ),
       body: buildListView(context),
     );

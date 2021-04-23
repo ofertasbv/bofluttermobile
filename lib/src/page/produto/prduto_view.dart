@@ -123,7 +123,6 @@ class _ProdutoDetalhesViewState extends State<ProdutoDetalhesView>
                     "Departamento",
                     style: TextStyle(
                       fontSize: 20,
-                      color: Theme.of(context).accentColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -131,7 +130,6 @@ class _ProdutoDetalhesViewState extends State<ProdutoDetalhesView>
                     "${p.subCategoria.nome}",
                     style: TextStyle(
                       fontSize: 16,
-                      color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

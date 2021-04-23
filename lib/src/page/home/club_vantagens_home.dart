@@ -1,4 +1,5 @@
 import 'package:bofluttermobile/src/page/cliente/cliente_create_page.dart';
+import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
 import 'package:flutter/material.dart';
 
 class ClubVantagensHome extends StatelessWidget {
@@ -38,10 +39,21 @@ class ClubVantagensHome extends StatelessWidget {
               trailing: CircleAvatar(
                 backgroundColor: Colors.deepPurpleAccent,
                 radius: 50,
-                child: Icon(
-                  Icons.wallet_giftcard,
+                child: IconButton(
                   color: Colors.white,
-                  size: 35,
+                  icon: Icon(
+                    Icons.wallet_giftcard,
+                    size: 30,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return PromocaoPage();
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

@@ -151,7 +151,7 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                     child: Text(
                       "VISÃO GERAL",
                       style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
                       ),
@@ -161,7 +161,7 @@ class _ProdutoDetalhesTabState extends State<ProdutoDetalhesTab>
                     child: Text(
                       "INFORMAÇÕES",
                       style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
                       ),

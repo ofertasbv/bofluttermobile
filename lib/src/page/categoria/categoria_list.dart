@@ -65,7 +65,7 @@ class _CategoriaListState extends State<CategoriaList>
           Container(
             height: 60,
             width: double.infinity,
-            color: Colors.grey[300],
+            color: Colors.grey[100],
             padding: EdgeInsets.all(0),
             child: ListTile(
               subtitle: TextFormField(

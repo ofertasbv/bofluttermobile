@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage>
                   );
                 },
               ),
-              SizedBox(width: 5),
+              SizedBox(width: 10),
             ],
           ),
           body: Center(child: lista[elementIndex]),

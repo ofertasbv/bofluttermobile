@@ -24,7 +24,7 @@ class ContainerProduto extends StatelessWidget {
           Container(
             width: 200,
             height: 150,
-            color: Colors.grey[300].withOpacity(1),
+            color: Colors.transparent,
             padding: EdgeInsets.all(0),
             child: p.foto != null
                 ? Container(
@@ -52,7 +52,7 @@ class ContainerProduto extends StatelessWidget {
           Container(
             width: 300,
             height: 150,
-            color: Colors.white,
+            color: Colors.transparent,
             padding: EdgeInsets.all(20),
             child: Column(
               children: [

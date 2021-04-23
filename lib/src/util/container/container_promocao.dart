@@ -32,7 +32,7 @@ class ContainerPromocao extends StatelessWidget {
               Container(
                 width: 100,
                 height: 100,
-                color: Colors.grey[100],
+                color: Colors.transparent,
                 padding: EdgeInsets.all(0),
                 child: p.foto != null
                     ? Container(
@@ -55,7 +55,7 @@ class ContainerPromocao extends StatelessWidget {
               Container(
                 width: 180,
                 height: 100,
-                color: Colors.grey[100],
+                color: Colors.transparent,
                 padding: EdgeInsets.all(0),
                 alignment: Alignment.center,
                 child: ListTile(
@@ -78,7 +78,7 @@ class ContainerPromocao extends StatelessWidget {
               Container(
                 width: 80,
                 height: 100,
-                color: Colors.grey[100],
+                color: Colors.transparent,
                 padding: EdgeInsets.all(5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

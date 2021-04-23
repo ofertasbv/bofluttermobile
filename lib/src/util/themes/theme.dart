@@ -7,13 +7,13 @@ ThemeData getTheme(BuildContext context) {
     primaryColor: Colors.deepPurpleAccent,
     accentColor: Colors.yellow[800],
     primarySwatch: Colors.deepPurple,
-    scaffoldBackgroundColor: Colors.grey[100],
+    scaffoldBackgroundColor: Colors.white,
     textTheme: GoogleFonts.latoTextTheme(
       Theme.of(context).textTheme,
     ),
     cardTheme: CardTheme(
-      elevation: 0,
-      color: Colors.white,
+      elevation: 2,
+      color: Colors.grey[100],
       margin: EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
         borderRadius: new BorderRadius.circular(0),

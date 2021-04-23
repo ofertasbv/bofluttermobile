@@ -74,9 +74,9 @@ class _ProdutoListHomeState extends State<ProdutoListHome>
         Produto p = produtos[index];
 
         return GestureDetector(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 2),
+          child: Card(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 2),
               color: Colors.white,
               height: 150,
               child: Row(

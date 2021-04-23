@@ -17,13 +17,13 @@ class ContainerLoja extends StatelessWidget {
         child: p.foto != null
             ? CircleAvatar(
                 backgroundColor: Theme.of(context).primaryColor,
-                radius: 20,
+                radius: 25,
                 backgroundImage: NetworkImage(
                   "${lojaController.arquivo + p.foto}",
                 ),
               )
             : CircleAvatar(
-                radius: 20,
+                radius: 25,
                 child: Icon(Icons.location_on_outlined),
               ),
       ),

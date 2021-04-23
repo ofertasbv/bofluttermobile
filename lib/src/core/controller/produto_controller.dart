@@ -2,6 +2,7 @@ import 'package:bofluttermobile/src/api/constants/constant_api.dart';
 import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
 import 'package:bofluttermobile/src/core/model/produto.dart';
 import 'package:bofluttermobile/src/core/repository/produto_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 
 part 'produto_controller.g.dart';

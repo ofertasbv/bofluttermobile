@@ -5,7 +5,8 @@ import 'package:mobx/mobx.dart';
 
 part 'seguimento_controller.g.dart';
 
-class SeguimentoController = SeguimentoControllerBase with _$SeguimentoController;
+class SeguimentoController = SeguimentoControllerBase
+    with _$SeguimentoController;
 
 abstract class SeguimentoControllerBase with Store {
   SeguimentoRepository seguimentoRepository;
@@ -23,5 +24,10 @@ abstract class SeguimentoControllerBase with Store {
   @action
   getAll() {
     seguimentos = seguimentoRepository.getAll().asObservable();
+  }
+
+  @action
+  getAllByNome(String nome) {
+    seguimentos = seguimentoRepository.getAllByNome(nome).asObservable();
   }
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
 import 'package:bofluttermobile/src/core/model/categoria.dart';
+import 'package:bofluttermobile/src/core/model/seguimento.dart';
 import 'package:bofluttermobile/src/page/subcategoria/subcategoria_page.dart';
 import 'package:bofluttermobile/src/util/container/container_categoria.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
@@ -11,8 +12,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 class CategoriaList extends StatefulWidget {
+  Seguimento s;
+
+  CategoriaList({Key key, this.s}) : super(key: key);
+
   @override
-  _CategoriaListState createState() => _CategoriaListState();
+  _CategoriaListState createState() => _CategoriaListState(seguimento: this.s);
 }
 
 class _CategoriaListState extends State<CategoriaList>
@@ -20,10 +25,17 @@ class _CategoriaListState extends State<CategoriaList>
   var categoriaController = GetIt.I.get<CategoriaController>();
   var nomeController = TextEditingController();
 
+  _CategoriaListState({this.seguimento});
+
+  Seguimento seguimento;
+
   @override
   void initState() {
-    categoriaController.getAll();
-    super.initState();
+    if (seguimento == null) {
+      categoriaController.getAll();
+    } else {
+      categoriaController.getAllBySeguimento(seguimento.id);
+    }
   }
 
   Future<void> onRefresh() {
@@ -116,11 +128,8 @@ class _CategoriaListState extends State<CategoriaList>
     double containerWidth = 160;
     double containerHeight = 20;
 
-    return ListView.separated(
+    return ListView.builder(
       itemCount: categorias.length,
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
       itemBuilder: (context, index) {
         Categoria c = categorias[index];
 

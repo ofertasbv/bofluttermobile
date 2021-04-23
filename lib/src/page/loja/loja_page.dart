@@ -12,6 +12,7 @@ class _LojaPageState extends State<LojaPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("todas as lojas"),
+        elevation: 0,
       ),
       body: Container(
         padding: EdgeInsets.all(0),

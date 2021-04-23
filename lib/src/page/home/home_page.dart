@@ -9,6 +9,9 @@ import 'package:bofluttermobile/src/page/pedidoitem/pedito_itens_page.dart';
 import 'package:bofluttermobile/src/page/produto/produto_list.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_list.dart';
+import 'package:bofluttermobile/src/page/seguimento/seguimento_list.dart';
+import 'package:bofluttermobile/src/page/usuario/usuario_login.dart';
+import 'package:bofluttermobile/src/page/usuario/usuario_login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -175,10 +178,10 @@ class _HomePageState extends State<HomePage>
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),
-                title: Text('home'),
+                title: Text('início'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.list_alt_outlined),
+                icon: Icon(Icons.wallet_giftcard_outlined),
                 title: Text('departamentos'),
               ),
               BottomNavigationBarItem(
@@ -190,8 +193,8 @@ class _HomePageState extends State<HomePage>
                 title: Text('ofertas'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined),
-                title: Text('produtos'),
+                icon: Icon(Icons.person_outline),
+                title: Text('perfil'),
               ),
             ],
             currentIndex: elementIndex,
@@ -262,10 +265,10 @@ class _HomePageState extends State<HomePage>
 
   List lista = [
     CatalogoHome(),
-    CategoriaList(),
+    SeguimentoList(),
     LojaList(),
     PromocaoList(),
-    ProdutoList(),
+    UsuarioLogin(),
   ];
 
   changeIndex(int index) {

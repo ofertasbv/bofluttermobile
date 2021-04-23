@@ -98,59 +98,53 @@ class _CategoriaListHomeState extends State<CategoriaListHome>
         return GestureDetector(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 2),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(0),
-                side: BorderSide(color: Colors.grey[100], width: 1),
-              ),
-              child: AnimatedContainer(
-                width: 90,
-                height: 150,
-                alignment: Alignment.center,
-                duration: Duration(seconds: 1),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.grey[200],
-                      Colors.white,
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  border: Border.all(color: Colors.transparent),
-                  borderRadius: BorderRadius.circular(0),
+            child: AnimatedContainer(
+              width: 90,
+              height: 150,
+              alignment: Alignment.center,
+              duration: Duration(seconds: 1),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.grey[100],
+                    Colors.grey[100],
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.all(1),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.grey[100],
-                        radius: 30,
-                        backgroundImage: NetworkImage(
-                          "${categoriaController.arquivo + c.foto}",
-                        ),
+                border: Border.all(color: Colors.transparent),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(1),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey[100],
+                      radius: 30,
+                      backgroundImage: NetworkImage(
+                        "${categoriaController.arquivo + c.foto}",
                       ),
                     ),
-                    SizedBox(height: 0),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(5),
-                      height: 40,
-                      width: containerWidth,
-                      child: Text(
-                        c.nome.toLowerCase(),
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[900],
-                        ),
+                  ),
+                  SizedBox(height: 0),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(5),
+                    height: 40,
+                    width: containerWidth,
+                    child: Text(
+                      c.nome.toLowerCase(),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[900],
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
           ),

@@ -1,21 +1,22 @@
-import 'package:bofluttermobile/src/core/controller/promocao_controller.dart';
-import 'package:bofluttermobile/src/page/promocao/promocao_list.dart';
+import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
+import 'package:bofluttermobile/src/page/categoria/categoria_list.dart';
+import 'package:bofluttermobile/src/page/seguimento/seguimento_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-class PromocaoPage extends StatefulWidget {
+class SeguimentoPage extends StatefulWidget {
   @override
-  _PromocaoPageState createState() => _PromocaoPageState();
+  _SeguimentoPageState createState() => _SeguimentoPageState();
 }
 
-class _PromocaoPageState extends State<PromocaoPage> {
-  var promocaoController = GetIt.I.get<PromocaoController>();
+class _SeguimentoPageState extends State<SeguimentoPage> {
+  var categoriaController = GetIt.I.get<CategoriaController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("todas as promoções"),
+        title: Text("todos os seguimentos"),
         elevation: 0,
         actions: [
           SizedBox(width: 5),
@@ -28,17 +29,14 @@ class _PromocaoPageState extends State<PromocaoPage> {
                 color: Colors.grey[200],
               ),
               onPressed: () {
-                promocaoController.getAll();
+                categoriaController.getAll();
               },
             ),
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 20),
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.all(0),
-        child: PromocaoList(),
-      ),
+      body: SeguimentoList(),
     );
   }
 }

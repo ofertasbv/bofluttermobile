@@ -17,13 +17,13 @@ class _CatalogoHomeState extends State<CatalogoHome> {
     return ListView(
       padding: EdgeInsets.all(0),
       children: <Widget>[
-        SizedBox(height: 5),
+        SizedBox(height: 0),
         Column(
           children: <Widget>[
             Container(
-              height: 130,
+              height: 80,
               padding: EdgeInsets.all(0),
-              child: CategoriaListHome(),
+              color: Colors.grey[200],
             ),
           ],
         ),
@@ -32,14 +32,15 @@ class _CatalogoHomeState extends State<CatalogoHome> {
           children: <Widget>[
             Container(
               child: ListTile(
-                leading: Text("Ofertas em destaque"),
-                trailing: Text(
-                  "veja mais",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    decoration: TextDecoration.underline,
-                  ),
+                leading: Icon(
+                  Icons.wallet_giftcard_outlined,
+                  color: Theme.of(context).primaryColor,
                 ),
+                title: Text(
+                  "Ofertas em destaque",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                trailing: Icon(Icons.arrow_forward_outlined),
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -64,14 +65,15 @@ class _CatalogoHomeState extends State<CatalogoHome> {
           children: <Widget>[
             Container(
               child: ListTile(
-                leading: Text("Produto em destaque"),
-                trailing: Text(
-                  "veja mais",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    decoration: TextDecoration.underline,
-                  ),
+                leading: Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Theme.of(context).primaryColor,
                 ),
+                title: Text(
+                  "Produtos em destaque",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                trailing: Icon(Icons.arrow_forward_outlined),
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(

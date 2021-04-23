@@ -1,59 +1,43 @@
 import 'dart:async';
 
-import 'package:bofluttermobile/src/core/controller/subcategoria_cotroller.dart';
-import 'package:bofluttermobile/src/core/filter/produto_filter.dart';
-import 'package:bofluttermobile/src/core/model/categoria.dart';
-import 'package:bofluttermobile/src/core/model/subcategoria.dart';
-import 'package:bofluttermobile/src/page/produto/produto_page.dart';
-import 'package:bofluttermobile/src/util/container/container_subcategoria.dart';
+import 'package:bofluttermobile/src/core/controller/seguimento_controller.dart';
+import 'package:bofluttermobile/src/core/model/seguimento.dart';
+import 'package:bofluttermobile/src/page/categoria/categoria_page.dart';
+import 'package:bofluttermobile/src/util/container/container_seguimento.dart';
 import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-class SubCategoriaList extends StatefulWidget {
-  Categoria categoria;
-
-  SubCategoriaList({Key key, this.categoria}) : super(key: key);
-
+class SeguimentoList extends StatefulWidget {
   @override
-  _SubCategoriaListState createState() =>
-      _SubCategoriaListState(categoria: this.categoria);
+  _SeguimentoListState createState() => _SeguimentoListState();
 }
 
-class _SubCategoriaListState extends State<SubCategoriaList>
-    with AutomaticKeepAliveClientMixin<SubCategoriaList> {
-  _SubCategoriaListState({this.categoria});
-
-  var subCategoriaController = GetIt.I.get<SubcategoriaCotroller>();
+class _SeguimentoListState extends State<SeguimentoList>
+    with AutomaticKeepAliveClientMixin<SeguimentoList> {
+  var seguimentoController = GetIt.I.get<SeguimentoController>();
   var nomeController = TextEditingController();
-
-  Categoria categoria;
-  ProdutoFilter filter = ProdutoFilter();
 
   @override
   void initState() {
-    if (categoria == null) {
-      subCategoriaController.getAll();
-    } else {
-      subCategoriaController.getAllByCategoria(categoria.id);
-    }
+    seguimentoController.getAll();
     super.initState();
   }
 
   Future<void> onRefresh() {
-    return subCategoriaController.getAll();
+    return seguimentoController.getAll();
   }
 
   bool isLoading = true;
 
   filterByNome(String nome) {
     if (nome.trim().isEmpty) {
-      subCategoriaController.getAll();
+      seguimentoController.getAll();
     } else {
       nome = nomeController.text;
-      subCategoriaController.getAllByNome(nome);
+      seguimentoController.getAllByNome(nome);
     }
   }
 
@@ -65,7 +49,6 @@ class _SubCategoriaListState extends State<SubCategoriaList>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 0),
           Container(
             height: 60,
             width: double.infinity,
@@ -75,7 +58,7 @@ class _SubCategoriaListState extends State<SubCategoriaList>
               subtitle: TextFormField(
                 controller: nomeController,
                 decoration: InputDecoration(
-                  labelText: "busca por subcategorias",
+                  labelText: "busca por departamentos",
                   prefixIcon: Icon(Icons.search_outlined),
                   suffixIcon: IconButton(
                     onPressed: () => nomeController.clear(),
@@ -94,6 +77,7 @@ class _SubCategoriaListState extends State<SubCategoriaList>
               ),
             ),
           ),
+          SizedBox(height: 0),
           Expanded(
             child: Container(
               color: Colors.transparent,
@@ -110,45 +94,43 @@ class _SubCategoriaListState extends State<SubCategoriaList>
       padding: EdgeInsets.only(top: 0),
       child: Observer(
         builder: (context) {
-          List<SubCategoria> categorias =
-              subCategoriaController.subCategorias.value;
-          if (subCategoriaController.subCategorias.error != null) {
+          List<Seguimento> seguimentos = seguimentoController.seguimentos.value;
+          if (seguimentoController.seguimentos.error != null) {
             return Text("Não foi possível carregados dados");
           }
 
-          if (categorias == null) {
+          if (seguimentos == null) {
             return CircularProgressorMini();
           }
 
           return RefreshIndicator(
             onRefresh: onRefresh,
-            child: builderList(categorias),
+            child: builderList(seguimentos),
           );
         },
       ),
     );
   }
 
-  builderList(List<SubCategoria> categorias) {
+  builderList(List<Seguimento> seguimentos) {
     double containerWidth = 160;
     double containerHeight = 20;
 
     return ListView.builder(
-      itemCount: categorias.length,
+      itemCount: seguimentos.length,
       itemBuilder: (context, index) {
-        SubCategoria c = categorias[index];
+        Seguimento c = seguimentos[index];
 
         return GestureDetector(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 0),
-            child: ContainerSubCategoria(subCategoriaController, c),
+            child: ContainerSeguimento(seguimentoController, c),
           ),
           onTap: () {
-            filter.subCategoria = c.id;
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (BuildContext context) {
-                  return ProdutoPage(filter: filter);
+                  return CategoriaPage(s: c);
                 },
               ),
             );

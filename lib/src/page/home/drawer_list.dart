@@ -1,8 +1,10 @@
+import 'package:bofluttermobile/src/core/model/seguimento.dart';
 import 'package:bofluttermobile/src/page/categoria/categoria_page.dart';
 import 'package:bofluttermobile/src/page/loja/loja_page.dart';
 import 'package:bofluttermobile/src/page/loja/teste_mapa.dart';
 import 'package:bofluttermobile/src/page/produto/produto_search.dart';
 import 'package:bofluttermobile/src/page/promocao/promocao_page.dart';
+import 'package:bofluttermobile/src/page/seguimento/seguimento_page.dart';
 import 'package:bofluttermobile/src/page/sobre/sobre_page.dart';
 import 'package:bofluttermobile/src/page/usuario/usuario_login_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -111,7 +113,7 @@ class DrawerList extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (BuildContext context) {
-                  return CategoriaPage();
+                  return SeguimentoPage();
                 },
               ),
             );

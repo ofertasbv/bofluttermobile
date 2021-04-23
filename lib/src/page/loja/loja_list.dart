@@ -119,10 +119,7 @@ class _LojaListState extends State<LojaList>
     double containerWidth = 160;
     double containerHeight = 30;
 
-    return ListView.separated(
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
+    return ListView.builder(
       itemCount: lojas.length,
       itemBuilder: (context, index) {
         Loja p = lojas[index];

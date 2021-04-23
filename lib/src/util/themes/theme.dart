@@ -4,7 +4,7 @@ ThemeData getTheme(BuildContext context) {
   return ThemeData(
     tabBarTheme: TabBarTheme(),
     brightness: Brightness.light,
-    primaryColor: Colors.deepPurpleAccent[800],
+    primaryColor: Colors.deepPurpleAccent,
     accentColor: Colors.yellow[800],
     primarySwatch: Colors.deepPurple,
     scaffoldBackgroundColor: Colors.grey[100],
@@ -40,7 +40,6 @@ ThemeData getTheme(BuildContext context) {
       actionTextColor: Colors.deepPurpleAccent[600],
       backgroundColor: Colors.deepOrangeAccent[600],
     ),
-    // scaffoldBackgroundColor: Colors.grey[100],
     bottomSheetTheme: BottomSheetThemeData(
       modalElevation: 1,
       backgroundColor: Colors.yellow[600],

@@ -29,4 +29,9 @@ abstract class CategoriaControllerBase with Store {
   getAllByNome(String nome) {
     categorias = categoriaRepository.getAllByNome(nome).asObservable();
   }
+
+  @action
+  getAllBySeguimento(int id) {
+    categorias = categoriaRepository.getAllBySeguimento(id).asObservable();
+  }
 }

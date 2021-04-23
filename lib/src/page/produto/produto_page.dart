@@ -45,6 +45,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
+        elevation: 0,
         title: Text("Produtos"),
         actions: [
           Observer(

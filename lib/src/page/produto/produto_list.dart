@@ -99,7 +99,7 @@ class _ProdutoListState extends State<ProdutoList>
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 1),
             child: Container(
-              color: Colors.grey[200],
+              color: Colors.grey[100],
               height: 100,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -131,7 +131,7 @@ class _ProdutoListState extends State<ProdutoList>
                   Container(
                     width: 170,
                     height: 100,
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     padding: EdgeInsets.all(0),
                     alignment: Alignment.center,
                     child: ListTile(
@@ -154,7 +154,7 @@ class _ProdutoListState extends State<ProdutoList>
                   Container(
                     width: 80,
                     height: 100,
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     padding: EdgeInsets.all(2),
                     alignment: Alignment.center,
                     child: Column(

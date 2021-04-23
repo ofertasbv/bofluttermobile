@@ -25,13 +25,15 @@ class _CatalogoHomeState extends State<CatalogoHome> {
         Column(
           children: <Widget>[
             Container(
-              height: 100,
+              height: 110,
               padding: EdgeInsets.all(10),
               color: Colors.grey[100],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
                         child: Container(
@@ -59,6 +61,8 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
                         child: Container(
@@ -86,6 +90,8 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
                         child: Container(
@@ -113,6 +119,8 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
                         child: Container(
@@ -140,6 +148,8 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
                         child: Container(

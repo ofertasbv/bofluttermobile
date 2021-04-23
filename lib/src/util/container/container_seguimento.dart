@@ -1,14 +1,15 @@
-import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
 import 'package:bofluttermobile/src/core/controller/seguimento_controller.dart';
-import 'package:bofluttermobile/src/core/model/categoria.dart';
 import 'package:bofluttermobile/src/core/model/seguimento.dart';
 import 'package:flutter/material.dart';
+import 'Dart:math';
 
 class ContainerSeguimento extends StatelessWidget {
   SeguimentoController seguimentoController;
   Seguimento p;
 
   ContainerSeguimento(this.seguimentoController, this.p);
+
+  Random random = Random();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ContainerSeguimento extends StatelessWidget {
       leading: Container(
         padding: EdgeInsets.all(1),
         child: CircleAvatar(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Color((random.nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1),
           radius: 25,
           child: Icon(Icons.wallet_giftcard_outlined),
         ),

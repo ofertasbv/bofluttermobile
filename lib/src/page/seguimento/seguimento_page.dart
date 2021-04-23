@@ -1,7 +1,11 @@
 import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
+import 'package:bofluttermobile/src/core/controller/seguimento_controller.dart';
+import 'package:bofluttermobile/src/core/model/seguimento.dart';
 import 'package:bofluttermobile/src/page/categoria/categoria_list.dart';
 import 'package:bofluttermobile/src/page/seguimento/seguimento_list.dart';
+import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 class SeguimentoPage extends StatefulWidget {
@@ -10,7 +14,7 @@ class SeguimentoPage extends StatefulWidget {
 }
 
 class _SeguimentoPageState extends State<SeguimentoPage> {
-  var categoriaController = GetIt.I.get<CategoriaController>();
+  var seguimentoController = GetIt.I.get<SeguimentoController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,26 @@ class _SeguimentoPageState extends State<SeguimentoPage> {
         title: Text("todos os seguimentos"),
         elevation: 0,
         actions: [
+          Observer(
+            builder: (context) {
+              List<Seguimento> seguimentos =
+                  seguimentoController.seguimentos.value;
+              if (seguimentoController.seguimentos.error != null) {
+                return Text("Não foi possível carregados dados");
+              }
+
+              if (seguimentos == null) {
+                return CircularProgressorMini();
+              }
+
+              return CircleAvatar(
+                child: Text(
+                  (seguimentoController.seguimentos.value.length ?? 0)
+                      .toString(),
+                ),
+              );
+            },
+          ),
           SizedBox(width: 5),
           CircleAvatar(
             backgroundColor: Theme.of(context).accentColor,
@@ -29,11 +53,11 @@ class _SeguimentoPageState extends State<SeguimentoPage> {
                 color: Colors.grey[200],
               ),
               onPressed: () {
-                categoriaController.getAll();
+                seguimentoController.getAll();
               },
             ),
           ),
-          SizedBox(width: 20),
+          SizedBox(width: 10),
         ],
       ),
       body: SeguimentoList(),

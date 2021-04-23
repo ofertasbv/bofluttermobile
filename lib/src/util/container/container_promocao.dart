@@ -25,6 +25,7 @@ class ContainerPromocao extends StatelessWidget {
         child: Container(
           color: Colors.white,
           height: 100,
+          padding: EdgeInsets.all(5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,28 +33,44 @@ class ContainerPromocao extends StatelessWidget {
               Container(
                 width: 100,
                 height: 100,
-                color: Colors.transparent,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.grey[100],
+                ),
                 padding: EdgeInsets.all(0),
                 child: p.foto != null
                     ? Container(
                         width: 100,
                         height: 100,
-                        color: Colors.grey[300],
-                        child: Image.network(
-                          "${promocaoController.arquivo + p.foto}",
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.grey[300],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image.network(
+                            "${promocaoController.arquivo + p.foto}",
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       )
                     : Container(
                         width: 100,
                         height: 100,
-                        color: Colors.grey[300],
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.grey[300],
+                        ),
+                        child: Icon(
+                          Icons.photo,
+                          size: 50,
+                        ),
                       ),
               ),
               Container(
-                width: 180,
+                width: 170,
                 height: 100,
                 color: Colors.transparent,
                 padding: EdgeInsets.all(0),

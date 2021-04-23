@@ -1,5 +1,6 @@
 import 'package:bofluttermobile/src/page/cliente/cliente_create_page.dart';
 import 'package:bofluttermobile/src/page/home/categoria_list_home.dart';
+import 'package:bofluttermobile/src/page/home/club_vantagens_home.dart';
 import 'package:bofluttermobile/src/page/home/produto_list_home.dart';
 import 'package:bofluttermobile/src/page/home/promocao_list_home.dart';
 import 'package:bofluttermobile/src/page/loja/teste_mapa.dart';
@@ -35,10 +36,13 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Theme.of(context).accentColor,
+                            backgroundColor: Colors.green[200],
+                            foregroundColor: Colors.grey[100],
                             radius: 30,
-                            child: Icon(Icons.shop, size: 30),
+                            child: Icon(
+                              Icons.shop,
+                              size: 40,
+                            ),
                           ),
                         ),
                         onTap: () {
@@ -59,12 +63,12 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Theme.of(context).primaryColor,
+                            backgroundColor: Colors.purple[200],
+                            foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
                               Icons.monetization_on_outlined,
-                              size: 30,
+                              size: 40,
                             ),
                           ),
                         ),
@@ -86,12 +90,12 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Theme.of(context).primaryColor,
+                            backgroundColor: Colors.blue[200],
+                            foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
                               Icons.local_offer_outlined,
-                              size: 30,
+                              size: 40,
                             ),
                           ),
                         ),
@@ -113,12 +117,12 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Theme.of(context).primaryColor,
+                            backgroundColor: Colors.deepOrange[200],
+                            foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
                               Icons.shopping_cart_outlined,
-                              size: 30,
+                              size: 40,
                             ),
                           ),
                         ),
@@ -140,12 +144,12 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Theme.of(context).primaryColor,
+                            backgroundColor: Colors.deepPurple[200],
+                            foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
                               Icons.location_on_outlined,
-                              size: 30,
+                              size: 40,
                             ),
                           ),
                         ),
@@ -196,13 +200,50 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                 },
               ),
             ),
-            SizedBox(height: 10),
+          ],
+        ),
+        SizedBox(height: 10),
+        Container(
+          height: 300,
+          padding: EdgeInsets.all(2),
+          child: PromocaoListHome(),
+        ),
+        SizedBox(height: 10),
+        Column(
+          children: <Widget>[
             Container(
-              height: 300,
-              padding: EdgeInsets.all(2),
-              child: PromocaoListHome(),
+              child: ListTile(
+                leading: Icon(
+                  Icons.wallet_giftcard_outlined,
+                  color: Theme.of(context).primaryColor,
+                ),
+                title: Text(
+                  "Club de vantagens",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text("Ganhe desconto a cada compra realizada"),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: Theme.of(context).primaryColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return PromocaoPage();
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
           ],
+        ),
+        SizedBox(height: 10),
+        Container(
+          height: 200,
+          padding: EdgeInsets.all(2),
+          child: ClubVantagensHome(),
         ),
         SizedBox(height: 10),
         Column(
@@ -233,14 +274,15 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                 },
               ),
             ),
-            SizedBox(height: 10),
-            Container(
-              height: 156,
-              padding: EdgeInsets.all(0),
-              child: ProdutoListHome(),
-            ),
           ],
         ),
+        SizedBox(height: 10),
+        Container(
+          height: 156,
+          padding: EdgeInsets.all(2),
+          child: ProdutoListHome(),
+        ),
+        SizedBox(height: 10),
       ],
     );
   }

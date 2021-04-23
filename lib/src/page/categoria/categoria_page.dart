@@ -1,7 +1,10 @@
 import 'package:bofluttermobile/src/core/controller/categoria_controller.dart';
+import 'package:bofluttermobile/src/core/model/categoria.dart';
 import 'package:bofluttermobile/src/core/model/seguimento.dart';
 import 'package:bofluttermobile/src/page/categoria/categoria_list.dart';
+import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 class CategoriaPage extends StatefulWidget {
@@ -27,6 +30,24 @@ class _CategoriaPageState extends State<CategoriaPage> {
         title: Text("todos os departamentos"),
         elevation: 0,
         actions: [
+          Observer(
+            builder: (context) {
+              List<Categoria> categorias = categoriaController.categorias.value;
+              if (categoriaController.categorias.error != null) {
+                return Text("Não foi possível carregados dados");
+              }
+
+              if (categorias == null) {
+                return CircularProgressorMini();
+              }
+
+              return CircleAvatar(
+                child: Text(
+                  (categoriaController.categorias.value.length ?? 0).toString(),
+                ),
+              );
+            },
+          ),
           SizedBox(width: 5),
           CircleAvatar(
             backgroundColor: Theme.of(context).accentColor,
@@ -41,7 +62,7 @@ class _CategoriaPageState extends State<CategoriaPage> {
               },
             ),
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 10),
         ],
       ),
       body: CategoriaList(s: seguimento),

@@ -64,7 +64,7 @@ class _ProdutoListHomeState extends State<ProdutoListHome>
   }
 
   builderList(List<Produto> produtos) {
-    double containerWidth = 250;
+    double containerWidth = 350;
     double containerHeight = 20;
 
     return ListView.builder(
@@ -73,106 +73,7 @@ class _ProdutoListHomeState extends State<ProdutoListHome>
       itemBuilder: (context, index) {
         Produto p = produtos[index];
 
-        return GestureDetector(
-          child: Card(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 2),
-              color: Colors.white,
-              height: 150,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 150,
-                    height: 150,
-                    color: Colors.grey[300].withOpacity(1),
-                    padding: EdgeInsets.all(0),
-                    child: p.foto != null
-                        ? Container(
-                            width: 150,
-                            height: 150,
-                            color: Colors.grey[300].withOpacity(1),
-                            child: Image.network(
-                              "${produtoController.arquivo + p.foto}",
-                              width: 150,
-                              height: 150,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : Container(
-                            width: 150,
-                            height: 150,
-                            color: Colors.grey[300].withOpacity(1),
-                          ),
-                  ),
-                  Container(
-                    width: 200,
-                    height: 150,
-                    color: Colors.white,
-                    padding: EdgeInsets.all(0),
-                    child: Column(
-                      children: [
-                        Container(
-                          child: ListTile(
-                            isThreeLine: false,
-                            title: Text(
-                              p.nome,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            subtitle: Text(
-                              "${p.loja.nome}",
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: ListTile(
-                            isThreeLine: false,
-                            title: Text(
-                              p.promocao.nome,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).accentColor,
-                              ),
-                            ),
-                            subtitle: Text(
-                              "R\$ ${formatMoeda.format(p.valorComDesconto)}",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return ProdutoDetalhesTab(p);
-                },
-              ),
-            );
-          },
-        );
+        return ContainerProduto(produtoController, p);
       },
     );
   }

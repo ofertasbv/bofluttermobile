@@ -1,7 +1,10 @@
 import 'package:bofluttermobile/src/core/controller/subcategoria_cotroller.dart';
 import 'package:bofluttermobile/src/core/model/categoria.dart';
+import 'package:bofluttermobile/src/core/model/subcategoria.dart';
 import 'package:bofluttermobile/src/page/subcategoria/subcategoria_list.dart';
+import 'package:bofluttermobile/src/util/load/circular_progresso_mini.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 class SubCategoriaPage extends StatefulWidget {
@@ -27,6 +30,26 @@ class _SubCategoriaPageState extends State<SubCategoriaPage> {
       appBar: AppBar(
         title: Text("todas as subcategorias"),
         actions: [
+          Observer(
+            builder: (context) {
+              List<SubCategoria> categorias =
+                  subCategoriaController.subCategorias.value;
+              if (subCategoriaController.subCategorias.error != null) {
+                return Text("Não foi possível carregados dados");
+              }
+
+              if (categorias == null) {
+                return CircularProgressorMini();
+              }
+
+              return CircleAvatar(
+                child: Text(
+                  (subCategoriaController.subCategorias.value.length ?? 0)
+                      .toString(),
+                ),
+              );
+            },
+          ),
           SizedBox(width: 5),
           CircleAvatar(
             backgroundColor: Theme.of(context).accentColor,
@@ -41,7 +64,7 @@ class _SubCategoriaPageState extends State<SubCategoriaPage> {
               },
             ),
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 10),
         ],
       ),
       body: SubCategoriaList(categoria: categoria),

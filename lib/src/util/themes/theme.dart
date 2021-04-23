@@ -8,7 +8,7 @@ ThemeData getTheme(BuildContext context) {
     accentColor: Colors.yellow[800],
     primarySwatch: Colors.deepPurple,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: GoogleFonts.latoTextTheme(
+    textTheme: GoogleFonts.robotoTextTheme(
       Theme.of(context).textTheme,
     ),
     cardTheme: CardTheme(
@@ -48,7 +48,7 @@ ThemeData getTheme(BuildContext context) {
       elevation: 0,
       selectedItemColor: Colors.yellow[800],
       unselectedItemColor: Colors.deepPurple,
-      unselectedLabelStyle: TextStyle(color: Colors.yellow[900]),
+      unselectedLabelStyle: TextStyle(color: Colors.yellow[800]),
       backgroundColor: Colors.grey[100],
     ),
   );

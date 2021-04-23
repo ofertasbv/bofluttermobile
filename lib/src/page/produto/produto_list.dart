@@ -101,6 +101,7 @@ class _ProdutoListState extends State<ProdutoList>
             child: Container(
               color: Colors.transparent,
               height: 100,
+              padding: EdgeInsets.all(5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,24 +109,40 @@ class _ProdutoListState extends State<ProdutoList>
                   Container(
                     width: 100,
                     height: 100,
-                    color: Colors.grey[300],
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.grey[100],
+                    ),
                     padding: EdgeInsets.all(0),
                     child: p.foto != null
                         ? Container(
                             width: 100,
                             height: 100,
-                            color: Colors.grey[300],
-                            child: Image.network(
-                              "${produtoController.arquivo + p.foto}",
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.grey[300],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.network(
+                                "${produtoController.arquivo + p.foto}",
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           )
                         : Container(
                             width: 100,
                             height: 100,
-                            color: Colors.grey[300],
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.grey[300],
+                            ),
+                            child: Icon(
+                              Icons.photo,
+                              size: 50,
+                            ),
                           ),
                   ),
                   Container(
@@ -199,7 +216,6 @@ class _ProdutoListState extends State<ProdutoList>
             );
           },
         );
-
       },
     );
   }

@@ -141,7 +141,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
 
   buildScrollbar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(2),
+      padding: EdgeInsets.all(0),
       child: pagina == "grid"
           ? ProdutoGrid(filter: filter)
           : ProdutoList(filter: filter),

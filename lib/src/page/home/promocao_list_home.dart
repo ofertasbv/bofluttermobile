@@ -83,59 +83,18 @@ class _PromocaoListHomeState extends State<PromocaoListHome>
         return GestureDetector(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 2),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(0),
-                side: BorderSide(color: Colors.grey[100], width: 1),
+            child: Container(
+              height: 300,
+              width: containerWidth,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: AnimatedContainer(
-                width: containerWidth,
-                duration: Duration(seconds: 1),
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(0),
-                      ),
-                      child: p.foto != null
-                          ? Container(
-                              child: Image.network(
-                                promocaoController.arquivo + p.foto,
-                                fit: BoxFit.cover,
-                                width: containerWidth,
-                                height: 200,
-                              ),
-                            )
-                          : Container(
-                              color: Colors.grey[300],
-                              width: containerWidth,
-                              height: 200,
-                            ),
-                    ),
-                    SizedBox(height: 0),
-                    Container(
-                      width: containerWidth,
-                      color: Colors.transparent,
-                      child: ListTile(
-                        title: Text(p.nome),
-                        subtitle: Text(p.descricao),
-                        trailing: Chip(
-                          backgroundColor: Theme.of(context).accentColor,
-                          label: Text(
-                            "OFF ${formatMoeda.format(p.desconto)}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              child: Stack(
+                children: [
+                  buildAnimatedContainer(containerWidth, p, context),
+                  buildContainerText(containerWidth, p, context),
+                ],
               ),
             ),
           ),
@@ -150,6 +109,82 @@ class _PromocaoListHomeState extends State<PromocaoListHome>
           },
         );
       },
+    );
+  }
+
+  buildAnimatedContainer(
+      double containerWidth, Promocao p, BuildContext context) {
+    return AnimatedContainer(
+      width: containerWidth,
+      duration: Duration(seconds: 1),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.transparent,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: p.foto != null
+                ? Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        promocaoController.arquivo + p.foto,
+                        fit: BoxFit.fill,
+                        width: containerWidth,
+                        height: 295,
+                      ),
+                    ),
+                  )
+                : Container(
+                    width: containerWidth,
+                    height: 290,
+                    child: Icon(
+                      Icons.photo,
+                      size: 110,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.grey[200],
+                    ),
+                  ),
+          ),
+          SizedBox(height: 0),
+        ],
+      ),
+    );
+  }
+
+  buildContainerText(double containerWidth, Promocao p, BuildContext context) {
+    return Positioned(
+      bottom: 10,
+      child: Container(
+        width: containerWidth,
+        child: ListTile(
+          title: Text(
+            p.nome,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          subtitle: Text(p.descricao),
+          trailing: Chip(
+            backgroundColor: Theme.of(context).accentColor,
+            label: Text(
+              "OFF ${formatMoeda.format(p.desconto)}",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 

@@ -60,6 +60,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
               }
 
               return CircleAvatar(
+                foregroundColor: Theme.of(context).accentColor,
                 child: Text(
                   (produtoController.produtos.value.length ?? 0).toString(),
                 ),
@@ -68,44 +69,10 @@ class _ProdutoPageState extends State<ProdutoPage> {
           ),
           SizedBox(width: 5),
           CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor.withOpacity(1),
-            foregroundColor: Colors.black,
-            child: IconButton(
-              icon: Icon(
-                Icons.dashboard,
-                color: Colors.grey[200],
-              ),
-              onPressed: () {
-                setState(() {
-                  pagina = "grid";
-                });
-              },
-            ),
-          ),
-          SizedBox(width: 5),
-          CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            foregroundColor: Colors.black,
-            child: IconButton(
-              icon: Icon(
-                Icons.table_rows,
-                color: Colors.grey[200],
-              ),
-              onPressed: () {
-                setState(() {
-                  pagina = "list";
-                });
-              },
-            ),
-          ),
-          SizedBox(width: 5),
-          CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            foregroundColor: Colors.black,
+            foregroundColor: Theme.of(context).accentColor,
             child: IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: Colors.grey[200],
               ),
               onPressed: () {
                 produtoController.getAllFilter(filter);
@@ -114,12 +81,10 @@ class _ProdutoPageState extends State<ProdutoPage> {
           ),
           SizedBox(width: 5),
           CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            foregroundColor: Colors.black,
+            foregroundColor: Theme.of(context).accentColor,
             child: IconButton(
               icon: Icon(
                 Icons.tune,
-                color: Colors.grey[200],
               ),
               onPressed: () {
                 Navigator.of(context).push(
@@ -141,10 +106,76 @@ class _ProdutoPageState extends State<ProdutoPage> {
 
   buildScrollbar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(0),
-      child: pagina == "grid"
-          ? ProdutoGrid(filter: filter)
-          : ProdutoList(filter: filter),
+      child: Column(
+        children: [
+          Container(
+            height: 50,
+            width: double.infinity,
+            child: Row(
+              children: [
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 1,
+                  child: FlatButton.icon(
+                    icon: Icon(Icons.dashboard),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                      side: BorderSide(color: Colors.grey[200]),
+                    ),
+                    color: Colors.grey[100],
+                    textColor: Colors.grey,
+                    padding: EdgeInsets.all(0),
+                    onPressed: () {
+                      setState(() {
+                        pagina = "grid";
+                      });
+                    },
+                    label: Text(
+                      "TABELA".toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 1,
+                  child: FlatButton.icon(
+                    icon: Icon(Icons.list_alt_outlined),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                      side: BorderSide(color: Colors.grey[200]),
+                    ),
+                    color: Colors.grey[100],
+                    textColor: Colors.grey,
+                    padding: EdgeInsets.all(0),
+                    onPressed: () {
+                      setState(() {
+                        pagina = "list";
+                      });
+                    },
+                    label: Text(
+                      "LISTA".toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(0),
+              child: pagina == "grid"
+                  ? ProdutoGrid(filter: filter)
+                  : ProdutoList(filter: filter),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

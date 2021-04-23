@@ -4,7 +4,7 @@ ThemeData getTheme(BuildContext context) {
   return ThemeData(
     tabBarTheme: TabBarTheme(),
     brightness: Brightness.light,
-    primaryColor: Colors.deepPurpleAccent,
+    primaryColor: Colors.deepPurple,
     accentColor: Colors.yellow[800],
     primarySwatch: Colors.deepPurple,
     scaffoldBackgroundColor: Colors.white,

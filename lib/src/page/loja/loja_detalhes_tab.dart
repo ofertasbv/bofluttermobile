@@ -62,8 +62,7 @@ class _LojaDetalhesTabState extends State<LojaDetalhesTab>
           title: Text(loja.nome),
           actions: <Widget>[
             CircleAvatar(
-              backgroundColor: Theme.of(context).accentColor,
-              foregroundColor: Colors.white,
+              foregroundColor: Theme.of(context).accentColor,
               child: IconButton(
                 icon: Icon(Icons.search_outlined),
                 onPressed: () {

@@ -33,6 +33,7 @@ class _PromocaoPageState extends State<PromocaoPage> {
               }
 
               return CircleAvatar(
+                foregroundColor: Theme.of(context).accentColor,
                 child: Text(
                   (promocaoController.promocoes.value.length ?? 0)
                       .toString(),
@@ -42,12 +43,10 @@ class _PromocaoPageState extends State<PromocaoPage> {
           ),
           SizedBox(width: 5),
           CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            foregroundColor: Colors.black,
+            foregroundColor: Theme.of(context).accentColor,
             child: IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: Colors.grey[200],
               ),
               onPressed: () {
                 promocaoController.getAll();

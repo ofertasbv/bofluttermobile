@@ -106,36 +106,25 @@ class _UsuarioPesquisaLoginState extends State<UsuarioPesquisaLogin>
         ),
         SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: Form(
             key: controller.formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        controller: emailController,
-                        onSaved: (value) => u.email = value.trim(),
-                        validator: validateEmail,
-                        decoration: InputDecoration(
-                          labelText: "Entre com e-mail",
-                          hintText: "example@email.com",
-                          prefixIcon: Icon(
-                            Icons.email_outlined,
-                            color: Colors.grey,
-                          ),
-                          suffixIcon: Icon(Icons.close),
-                          labelStyle: TextStyle(color: Colors.black),
-                        ),
-                        keyboardType: TextInputType.text,
-                        maxLength: 50,
-                        maxLines: 1,
-                      ),
-                    ],
+                TextFormField(
+                  controller: emailController,
+                  onSaved: (value) => u.email = value.trim(),
+                  validator: validateEmail,
+                  decoration: InputDecoration(
+                    labelText: "Entre com e-mail",
+                    hintText: "example@email.com",
+                    suffixIcon: Icon(Icons.close),
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
+                  keyboardType: TextInputType.text,
+                  maxLength: 50,
+                  maxLines: 1,
                 ),
               ],
             ),
@@ -143,7 +132,7 @@ class _UsuarioPesquisaLoginState extends State<UsuarioPesquisaLogin>
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.only(left: 30, right: 30, top: 20),
           child: RaisedButton.icon(
             label: Text("Enviar formulário"),
             icon: Icon(Icons.check),

@@ -73,112 +73,63 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
     var focus = FocusScope.of(context);
     return ListView(
       children: <Widget>[
-        Container(
-          height: 130,
-          color: Theme.of(context).accentColor.withOpacity(0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(1),
-                decoration: new BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).primaryColor,
-                      Theme.of(context).primaryColor
-                    ],
-                  ),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: CircleAvatar(
-                  backgroundColor: Colors.grey[100],
-                  radius: 25,
-                  child: Icon(
-                    Icons.person,
-                    size: 25,
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Text("Olá :) acesse sua conta"),
-            ],
-          ),
-        ),
+        buildContainer(context),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: Form(
             key: controller.formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        onSaved: (value) => u.email = value.trim(),
-                        controller: emailController,
-                        validator: validateEmail,
-                        decoration: InputDecoration(
-                          labelText: "Insira seu e-mail",
-                          hintText: "email@gmail.com",
-                          prefixIcon: Icon(
-                            Icons.email_outlined,
-                            color: Colors.grey,
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () => emailController.clear(),
-                            icon: Icon(Icons.clear),
-                          ),
-                        ),
-                        onEditingComplete: () => focus.nextFocus(),
-                        keyboardType: TextInputType.emailAddress,
-                        maxLength: 50,
-                        maxLines: 1,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        autofocus: false,
-                        controller: senhaController,
-                        onSaved: (value) => u.senha = value.trim(),
-                        validator: validateSenha,
-                        decoration: InputDecoration(
-                          labelText: "Digite sua senha",
-                          hintText: "Senha",
-                          prefixIcon: Icon(Icons.security, color: Colors.grey),
-                          suffixIcon: IconButton(
-                            icon: usuarioController.senhaVisivel == true
-                                ? Icon(Icons.visibility_outlined,
-                                    color: Colors.grey)
-                                : Icon(Icons.visibility_off_outlined,
-                                    color: Colors.grey),
-                            onPressed: () {
-                              usuarioController.visualizarSenha();
-                            },
-                          ),
-                        ),
-                        onEditingComplete: () => focus.nextFocus(),
-                        keyboardType: TextInputType.text,
-                        obscureText: !usuarioController.senhaVisivel,
-                        maxLength: 8,
-                      ),
-                      SizedBox(height: 0),
-                    ],
+                TextFormField(
+                  onSaved: (value) => u.email = value.trim(),
+                  controller: emailController,
+                  validator: validateEmail,
+                  decoration: InputDecoration(
+                    labelText: "Insira seu e-mail",
+                    hintText: "email@gmail.com",
+                    suffixIcon: IconButton(
+                      onPressed: () => emailController.clear(),
+                      icon: Icon(Icons.clear),
+                    ),
                   ),
+                  onEditingComplete: () => focus.nextFocus(),
+                  keyboardType: TextInputType.emailAddress,
+                  maxLength: 50,
+                  maxLines: 1,
                 ),
+                TextFormField(
+                  autofocus: false,
+                  controller: senhaController,
+                  onSaved: (value) => u.senha = value.trim(),
+                  validator: validateSenha,
+                  decoration: InputDecoration(
+                    labelText: "Digite sua senha",
+                    hintText: "Senha",
+                    suffixIcon: IconButton(
+                      icon: usuarioController.senhaVisivel == true
+                          ? Icon(Icons.visibility_outlined,
+                          color: Colors.grey)
+                          : Icon(Icons.visibility_off_outlined,
+                          color: Colors.grey),
+                      onPressed: () {
+                        usuarioController.visualizarSenha();
+                      },
+                    ),
+                  ),
+                  onEditingComplete: () => focus.nextFocus(),
+                  keyboardType: TextInputType.text,
+                  obscureText: !usuarioController.senhaVisivel,
+                  maxLength: 8,
+                )
               ],
             ),
           ),
         ),
         SizedBox(height: 0),
         Container(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: RaisedButton.icon(
             label: Text("Entrar"),
             icon: Icon(Icons.check),
@@ -205,9 +156,9 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: RaisedButton.icon(
-            color: Colors.grey[300],
+            color: Theme.of(context).accentColor,
             icon: Icon(Icons.account_circle_outlined),
             onPressed: () {
               Navigator.of(context).push(
@@ -251,6 +202,45 @@ class _UsuarioLoginState extends State<UsuarioLogin> with LoginValidators {
         )
       ],
     );
+  }
+
+  Container buildContainer(BuildContext context) {
+    return Container(
+        height: 130,
+        color: Theme.of(context).accentColor.withOpacity(0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(1),
+              decoration: new BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).primaryColor
+                  ],
+                ),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: CircleAvatar(
+                backgroundColor: Colors.grey[100],
+                radius: 25,
+                child: Icon(
+                  Icons.person,
+                  size: 25,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Text("Olá :) acesse sua conta"),
+          ],
+        ),
+      );
   }
 
   buildPush(BuildContext context) {

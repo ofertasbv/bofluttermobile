@@ -32,7 +32,7 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor: Colors.deepPurpleAccent,
+      statusBarColor: Colors.deepPurple,
       // cor da barra superior
       statusBarIconBrightness: Brightness.dark,
       // ícones da barra superior

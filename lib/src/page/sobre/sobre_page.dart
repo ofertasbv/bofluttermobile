@@ -13,6 +13,18 @@ class _SobrePageState extends State<SobrePage> {
         elevation: 0,
         titleSpacing: 0,
         title: Text("Sobre"),
+        actions: [
+          CircleAvatar(
+            foregroundColor: Theme.of(context).accentColor,
+            child: IconButton(
+              icon: Icon(
+                Icons.info_outline,
+              ),
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(width: 10),
+        ],
       ),
       body: buildContainer(context),
     );

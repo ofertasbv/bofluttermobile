@@ -90,12 +90,10 @@ class _HomePageState extends State<HomePage>
             ),
             actions: <Widget>[
               CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor,
-                foregroundColor: Colors.black,
+                foregroundColor: Theme.of(context).accentColor,
                 child: IconButton(
                   icon: Icon(
                     Icons.location_on_outlined,
-                    color: Colors.grey[200],
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -111,12 +109,10 @@ class _HomePageState extends State<HomePage>
               ),
               SizedBox(width: 5),
               CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor,
-                foregroundColor: Colors.black,
+                foregroundColor: Theme.of(context).accentColor,
                 child: IconButton(
                   icon: Icon(
                     Icons.search_outlined,
-                    color: Colors.grey[200],
                   ),
                   onPressed: () {
                     showSearch(
@@ -129,8 +125,7 @@ class _HomePageState extends State<HomePage>
               SizedBox(width: 5),
               GestureDetector(
                 child: CircleAvatar(
-                  backgroundColor: Theme.of(context).accentColor,
-                  foregroundColor: Colors.black,
+                  foregroundColor: Theme.of(context).accentColor,
                   child: Stack(
                     alignment: Alignment.topRight,
                     children: <Widget>[

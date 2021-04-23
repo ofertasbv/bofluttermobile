@@ -20,7 +20,8 @@ class UsuarioRecuperarSenha extends StatefulWidget {
       _UsuarioRecuperarSenhaState(u: this.usuario);
 }
 
-class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> with LoginValidators {
+class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha>
+    with LoginValidators {
   var usuarioController = GetIt.I.get<UsuarioController>();
   Dialogs dialogs = Dialogs();
 
@@ -104,111 +105,70 @@ class _UsuarioRecuperarSenhaState extends State<UsuarioRecuperarSenha> with Logi
         ),
         SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: Form(
             key: controller.formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        controller: emailController,
-                        onSaved: (value) => u.email = value.trim(),
-                        validator: validateEmail,
-                        decoration: InputDecoration(
-                          labelText: "Entre com e-mail",
-                          hintText: "example@email.com",
-                          prefixIcon: Icon(
-                            Icons.email_outlined,
-                            color: Colors.grey,
-                          ),
-                          suffixIcon: Icon(Icons.close),
-                          labelStyle: TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0)),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.lime[900]),
-                            gapPadding: 1,
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        onEditingComplete: () => focus.nextFocus(),
-                        keyboardType: TextInputType.text,
-                        maxLength: 50,
-                        maxLines: 1,
-                      ),
-                      TextFormField(
-                        controller: senhaController,
-                        onSaved: (value) => u.senha = value.trim(),
-                        validator: validateSenha,
-                        decoration: InputDecoration(
-                          labelText: "Digite nova senha",
-                          hintText: "Nova senha",
-                          prefixIcon: Icon(Icons.security, color: Colors.grey),
-                          suffixIcon: IconButton(
-                            icon: usuarioController.senhaVisivel == true
-                                ? Icon(Icons.visibility_outlined,
-                                    color: Colors.grey)
-                                : Icon(Icons.visibility_off_outlined,
-                                    color: Colors.grey),
-                            onPressed: () {
-                              usuarioController.visualizarSenha();
-                            },
-                          ),
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0)),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.lime[900]),
-                            gapPadding: 1,
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        onEditingComplete: () => focus.nextFocus(),
-                        keyboardType: TextInputType.text,
-                        obscureText: !usuarioController.senhaVisivel,
-                        maxLength: 8,
-                      ),
-                      SizedBox(height: 10),
-                      TextFormField(
-                        controller: confirmaSenhaController,
-                        validator: validateSenha,
-                        decoration: InputDecoration(
-                          labelText: "Confirma a senha",
-                          hintText: "Confirma senha",
-                          prefixIcon: Icon(Icons.security, color: Colors.grey),
-                          suffixIcon: IconButton(
-                            icon: usuarioController.senhaVisivel == true
-                                ? Icon(Icons.visibility_outlined,
-                                    color: Colors.grey)
-                                : Icon(Icons.visibility_off_outlined,
-                                    color: Colors.grey),
-                            onPressed: () {
-                              usuarioController.visualizarSenha();
-                            },
-                          ),
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0)),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.lime[900]),
-                            gapPadding: 1,
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        onEditingComplete: () => focus.nextFocus(),
-                        keyboardType: TextInputType.text,
-                        obscureText: !usuarioController.senhaVisivel,
-                        maxLength: 8,
-                      ),
-                      SizedBox(height: 10),
-                    ],
+                TextFormField(
+                  controller: emailController,
+                  onSaved: (value) => u.email = value.trim(),
+                  validator: validateEmail,
+                  decoration: InputDecoration(
+                    labelText: "Entre com e-mail",
+                    hintText: "example@email.com",
+                    suffixIcon: Icon(Icons.close),
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
+                  onEditingComplete: () => focus.nextFocus(),
+                  keyboardType: TextInputType.text,
+                  maxLength: 50,
+                  maxLines: 1,
+                ),
+                TextFormField(
+                  controller: senhaController,
+                  onSaved: (value) => u.senha = value.trim(),
+                  validator: validateSenha,
+                  decoration: InputDecoration(
+                    labelText: "Digite nova senha",
+                    hintText: "Nova senha",
+                    suffixIcon: IconButton(
+                      icon: usuarioController.senhaVisivel == true
+                          ? Icon(Icons.visibility_outlined, color: Colors.grey)
+                          : Icon(Icons.visibility_off_outlined,
+                              color: Colors.grey),
+                      onPressed: () {
+                        usuarioController.visualizarSenha();
+                      },
+                    ),
+                  ),
+                  onEditingComplete: () => focus.nextFocus(),
+                  keyboardType: TextInputType.text,
+                  obscureText: !usuarioController.senhaVisivel,
+                  maxLength: 8,
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  controller: confirmaSenhaController,
+                  validator: validateSenha,
+                  decoration: InputDecoration(
+                    labelText: "Confirma a senha",
+                    hintText: "Confirma senha",
+                    suffixIcon: IconButton(
+                      icon: usuarioController.senhaVisivel == true
+                          ? Icon(Icons.visibility_outlined, color: Colors.grey)
+                          : Icon(Icons.visibility_off_outlined,
+                              color: Colors.grey),
+                      onPressed: () {
+                        usuarioController.visualizarSenha();
+                      },
+                    ),
+                  ),
+                  onEditingComplete: () => focus.nextFocus(),
+                  keyboardType: TextInputType.text,
+                  obscureText: !usuarioController.senhaVisivel,
+                  maxLength: 8,
                 ),
               ],
             ),

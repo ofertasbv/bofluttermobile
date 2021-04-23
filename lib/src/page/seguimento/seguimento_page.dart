@@ -36,6 +36,7 @@ class _SeguimentoPageState extends State<SeguimentoPage> {
               }
 
               return CircleAvatar(
+                foregroundColor: Theme.of(context).accentColor,
                 child: Text(
                   (seguimentoController.seguimentos.value.length ?? 0)
                       .toString(),
@@ -45,12 +46,10 @@ class _SeguimentoPageState extends State<SeguimentoPage> {
           ),
           SizedBox(width: 5),
           CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            foregroundColor: Colors.black,
+            foregroundColor: Theme.of(context).accentColor,
             child: IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: Colors.grey[200],
               ),
               onPressed: () {
                 seguimentoController.getAll();

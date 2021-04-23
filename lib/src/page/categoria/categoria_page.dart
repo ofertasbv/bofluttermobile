@@ -42,6 +42,7 @@ class _CategoriaPageState extends State<CategoriaPage> {
               }
 
               return CircleAvatar(
+                foregroundColor: Theme.of(context).accentColor,
                 child: Text(
                   (categoriaController.categorias.value.length ?? 0).toString(),
                 ),
@@ -50,12 +51,10 @@ class _CategoriaPageState extends State<CategoriaPage> {
           ),
           SizedBox(width: 5),
           CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            foregroundColor: Colors.black,
+            foregroundColor: Theme.of(context).accentColor,
             child: IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: Colors.grey[200],
               ),
               onPressed: () {
                 categoriaController.getAll();

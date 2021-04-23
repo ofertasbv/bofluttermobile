@@ -132,7 +132,7 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
         ),
         SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -148,7 +148,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     decoration: InputDecoration(
                       labelText: "Nome completo",
                       hintText: "nome",
-                      prefixIcon: Icon(Icons.people, color: Colors.grey),
                       suffixIcon: Icon(Icons.close),
                     ),
                     onEditingComplete: () => focus.nextFocus(),
@@ -167,7 +166,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     decoration: InputDecoration(
                       labelText: "cpf",
                       hintText: "cpf",
-                      prefixIcon: Icon(Icons.contact_mail, color: Colors.grey),
                       suffixIcon: Icon(Icons.close),
                     ),
                     onEditingComplete: () => focus.nextFocus(),
@@ -187,7 +185,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     decoration: InputDecoration(
                       labelText: "Telefone",
                       hintText: "Telefone celular",
-                      prefixIcon: Icon(Icons.phone, color: Colors.grey),
                       suffixIcon: Icon(Icons.close),
                     ),
                     onEditingComplete: () => focus.nextFocus(),
@@ -206,7 +203,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     decoration: InputDecoration(
                       labelText: "Email",
                       hintText: "Email",
-                      prefixIcon: Icon(Icons.email, color: Colors.grey),
                       suffixIcon: Icon(Icons.close),
                     ),
                     onEditingComplete: () => focus.nextFocus(),
@@ -224,7 +220,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     decoration: InputDecoration(
                       labelText: "Senha",
                       hintText: "Senha",
-                      prefixIcon: Icon(Icons.security, color: Colors.grey),
                       suffixIcon: IconButton(
                         icon: clienteController.senhaVisivel == true
                             ? Icon(Icons.visibility_outlined,
@@ -251,7 +246,6 @@ class _ClienteCreatePageState extends State<ClienteCreatePage>
                     decoration: InputDecoration(
                       labelText: "Confirma senha",
                       hintText: "Confirma senha",
-                      prefixIcon: Icon(Icons.security, color: Colors.grey),
                       suffixIcon: IconButton(
                         icon: clienteController.senhaVisivel == true
                             ? Icon(Icons.visibility_outlined,

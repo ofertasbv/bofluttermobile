@@ -38,6 +38,7 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: GlobalScaffold.instance.scaffkey,
       appBar: AppBar(
         title: Text("Meus pedidos"),
         actions: [
@@ -125,7 +126,7 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
                       );
                     },
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(35),
+                      borderRadius: BorderRadius.circular(10),
                       side: BorderSide(color: Colors.blue),
                     ),
                     color: Colors.white,
@@ -165,86 +166,107 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
         return GestureDetector(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 2),
-            child: Card(
-              child: Container(
-                color: Colors.grey[200],
-                padding: EdgeInsets.all(0),
-                width: double.infinity,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    p.produto.foto != null
+            child: Container(
+              color: Colors.transparent,
+              padding: EdgeInsets.all(5),
+              width: double.infinity,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.grey[100],
+                    ),
+                    padding: EdgeInsets.all(0),
+                    child: p.produto.foto != null
                         ? Container(
-                            color: Colors.grey[500],
-                            child: Image.network(
-                              ConstantApi.urlArquivoProduto + p.produto.foto,
-                              fit: BoxFit.cover,
-                              width: 100,
-                              height: 100,
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.grey[300],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.network(
+                                "${ConstantApi.urlArquivoProduto + p.produto.foto}",
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           )
                         : Container(
-                            color: Colors.grey[500],
                             width: 100,
                             height: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.grey[200],
+                            ),
+                            child: Icon(
+                              Icons.photo,
+                              size: 50,
+                            ),
                           ),
-                    Expanded(
-                      child: ListTile(
-                        title: Text(
-                          p.produto.nome,
-                        ),
-                        subtitle: Text(
-                          "R\$ ${formatMoeda.format(p.valorTotal)}",
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: Text(
+                        p.produto.nome,
+                      ),
+                      subtitle: Text(
+                        "R\$ ${formatMoeda.format(p.valorTotal)}",
+                        style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
                         ),
                       ),
                     ),
-                    Container(
-                      width: 80,
-                      height: 100,
-                      color: Colors.grey[300],
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Colors.black,
-                            child: IconButton(
-                              icon: Icon(Icons.add),
-                              splashColor: Colors.black,
-                              onPressed: () {
-                                setState(() {
-                                  pedidoItemController.incremento(p);
-                                  pedidoItemController.calculateTotal();
-                                });
-                              },
-                            ),
+                  ),
+                  Container(
+                    width: 80,
+                    height: 100,
+                    color: Colors.transparent,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey[200],
+                          foregroundColor: Colors.black,
+                          child: IconButton(
+                            icon: Icon(Icons.add),
+                            splashColor: Colors.black,
+                            onPressed: () {
+                              setState(() {
+                                pedidoItemController.incremento(p);
+                                pedidoItemController.calculateTotal();
+                              });
+                            },
                           ),
-                          Text("${p.quantidade}"),
-                          CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            foregroundColor: Colors.black,
-                            child: IconButton(
-                              icon:
-                                  Icon(Icons.indeterminate_check_box_outlined),
-                              splashColor: Colors.black,
-                              onPressed: () {
-                                setState(() {
-                                  pedidoItemController.decremento(p);
-                                  pedidoItemController.calculateTotal();
-                                });
-                              },
-                            ),
+                        ),
+                        Text("${p.quantidade}"),
+                        CircleAvatar(
+                          backgroundColor: Colors.grey[200],
+                          foregroundColor: Colors.black,
+                          child: IconButton(
+                            icon: Icon(Icons.indeterminate_check_box_outlined),
+                            splashColor: Colors.black,
+                            onPressed: () {
+                              setState(() {
+                                pedidoItemController.decremento(p);
+                                pedidoItemController.calculateTotal();
+                              });
+                            },
                           ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           ),
@@ -398,6 +420,12 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
                 Center(
                   child: p.produto.foto != null
                       ? Container(
+                          width: 200,
+                          height: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.grey[200],
+                          ),
                           child: Image.network(
                             ConstantApi.urlArquivoProduto + p.produto.foto,
                             fit: BoxFit.cover,
@@ -408,7 +436,14 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
                       : Container(
                           width: 200,
                           height: 200,
-                          color: Colors.grey[500],
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.grey[300],
+                          ),
+                          child: Icon(
+                            Icons.photo,
+                            size: 50,
+                          ),
                         ),
                 ),
               ],
@@ -418,16 +453,13 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
             RaisedButton.icon(
               icon: Icon(
                 Icons.cancel,
-                color: Colors.grey,
               ),
               shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.grey),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(0),
-                ),
+                side: BorderSide(color: Colors.transparent),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               label: Text('CANCELAR'),
-              color: Colors.white,
+              color: Theme.of(context).accentColor,
               elevation: 0,
               onPressed: () {
                 Navigator.of(context).pop();
@@ -436,16 +468,13 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
             RaisedButton.icon(
               icon: Icon(
                 Icons.restore_from_trash,
-                color: Colors.green,
               ),
               shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.green),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(0),
-                ),
+                side: BorderSide(color: Colors.transparent),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               label: Text('EXCLUIR'),
-              color: Colors.white,
+              color: Theme.of(context).primaryColor,
               elevation: 0,
               onPressed: () {
                 setState(() {
@@ -453,7 +482,7 @@ class _PedidoItensListPageState extends State<PedidoItensListPage> {
                   pedidoItemController.itens;
                   pedidoItemController.calculateTotal();
                 });
-                // showSnackbar(context, "Produto ${p.produto.nome} removido");
+                showSnackbar(context, "Produto ${p.produto.nome} removido");
                 Navigator.of(context).pop();
               },
             ),

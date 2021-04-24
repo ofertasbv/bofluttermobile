@@ -1,4 +1,5 @@
 import 'package:bofluttermobile/src/page/cliente/cliente_create_page.dart';
+import 'package:bofluttermobile/src/page/home/cartao_credito_home.dart';
 import 'package:bofluttermobile/src/page/home/categoria_list_home.dart';
 import 'package:bofluttermobile/src/page/home/club_vantagens_home.dart';
 import 'package:bofluttermobile/src/page/home/produto_list_home.dart';
@@ -38,7 +39,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.green[200],
+                            backgroundColor: Colors.green[300],
                             foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
@@ -67,7 +68,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.purple[200],
+                            backgroundColor: Colors.purple[300],
                             foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
@@ -96,7 +97,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.blue[200],
+                            backgroundColor: Colors.blue[300],
                             foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
@@ -125,7 +126,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.deepOrange[200],
+                            backgroundColor: Colors.deepOrange[300],
                             foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
@@ -154,7 +155,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
                       GestureDetector(
                         child: Container(
                           child: CircleAvatar(
-                            backgroundColor: Colors.deepPurple[200],
+                            backgroundColor: Colors.deepPurple[300],
                             foregroundColor: Colors.grey[100],
                             radius: 30,
                             child: Icon(
@@ -222,6 +223,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
         Column(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(top: 10, bottom: 10),
               child: ListTile(
                 leading: Icon(
                   Icons.wallet_giftcard_outlined,
@@ -259,6 +261,7 @@ class _CatalogoHomeState extends State<CatalogoHome> {
         Column(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(top: 10, bottom: 10),
               child: ListTile(
                 leading: Icon(
                   Icons.shopping_cart_outlined,
@@ -293,6 +296,43 @@ class _CatalogoHomeState extends State<CatalogoHome> {
           child: ProdutoListHome(),
         ),
         SizedBox(height: 10),
+        Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 10, bottom: 10),
+              child: ListTile(
+                leading: Icon(
+                  Icons.credit_card,
+                  color: Theme.of(context).primaryColor,
+                ),
+                title: Text(
+                  "Meu cartão BookOfertas",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text("Veja limite, quando comprar e sua fatura"),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: Theme.of(context).primaryColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return PromocaoPage();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 10),
+        Container(
+          height: 200,
+          padding: EdgeInsets.all(2),
+          child: CartaoCreditoHome(),
+        ),
       ],
     );
   }
